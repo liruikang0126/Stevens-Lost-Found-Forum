@@ -28,14 +28,8 @@ const exportedMethods = {
     return strVal;
   },
   checkIsAdmin(isAdmin) {
-    if (!isAdmin) throw `Error: You must supply a isAdmin`;
-    if (typeof isAdmin !== "string") {
-      throw "isAdmin must be a string";
-    }
-    isAdmin = isAdmin.trim().toLowerCase();
-    if (isAdmin != "true" && isAdmin != "false") {
-      throw "isAdmin must be true or false";
-    }
+    if (typeof isAdmin !== "boolean")
+      throw `Error: You must supply a boolean isAdmin`;
     return isAdmin;
   },
   checkEmail(email) {
@@ -86,7 +80,7 @@ const exportedMethods = {
     return /\d/.test(myString);
   },
   checkUsername(strVal) {
-    // For Name, it should be a valid string (no strings with just spaces, should not contain numbers)
+    // For Name, it should be a valid string (should not contain numbers)
     // and should be at least 5 characters long with a max of 12 characters
     // If it fails any of those conditions, you will throw an error.
     if (!strVal) throw `Error: You must supply a username!`;

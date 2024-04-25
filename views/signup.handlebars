@@ -7,26 +7,40 @@
                         <div class="field">
                             <label class="label">Username</label>
                             <div class="control has-icons-left">
-                                <input
-                                    type="email"
-                                    placeholder="e.g. TechSmith210"
-                                    class="input username-input"
-                                    required
-                                />
+                                <input type="text" placeholder="e.g. Dilraba Dilmurat" class="input username-input"
+                                    required />
                                 <span class="icon is-small is-left">
                                     <i class="fa fa-user"></i>
                                 </span>
                             </div>
                         </div>
                         <div class="field">
+                            <ul class="register-hint">
+                                <li>Your username should be at least 5 characters long with a max of 12 characters.</li>
+                                <li>Your username should not contain numbers.</li>
+                            </ul>
+                        </div>
+                        <div class="field">
+                            <label class="label">Role</label>
+                            <div class="signup-role">
+                                <input class="form-check-input" type="radio" name="role" id="gridRadios1" value="user"
+                                    checked>
+                                <label class="form-check-label" for="gridRadios1">
+                                    General user
+                                </label>
+                            </div>
+                            <div class="signup-role">
+                                <input class="form-check-input" type="radio" name="role" id="gridRadios2" value="admin">
+                                <label class="form-check-label" for="gridRadios2">
+                                    Admin User
+                                </label>
+                            </div>
+                        </div>
+                        <div class="field">
                             <label class="label">Email</label>
                             <div class="control has-icons-left">
-                                <input
-                                    type="email"
-                                    placeholder="e.g. techsmith210@gmail.com"
-                                    class="input email-input"
-                                    required
-                                />
+                                <input type="email" placeholder="e.g. cs546group33@gmail.com" class="input email-input"
+                                    required />
                                 <span class="icon is-small is-left">
                                     <i class="fa fa-envelope"></i>
                                 </span>
@@ -35,21 +49,42 @@
                         <div class="field">
                             <label class="label">Password</label>
                             <div class="control has-icons-left">
-                                <input
-                                    type="password"
-                                    placeholder="******* (minimum 6 characters)"
-                                    class="input password-input"
-                                    required
-                                />
+                                <input id="password" type="password" placeholder="******** (minimum 8 characters)"
+                                    class="input password-input" required />
                                 <span class="icon is-small is-left">
                                     <i class="fa fa-lock"></i>
                                 </span>
                             </div>
                         </div>
+                        <div class="field">
+                            <ul class="register-hint">
+                                <li>Your password should not contain space.</li>
+                                <li>Your password must contain at least 8 characters.</li>
+                                <li>At least one uppercase character, one number and one
+                                    special character.</li>
+                            </ul>
+                        </div>
+                        <div class="field">
+                            <label class="label">Confirm Password</label>
+                            <div class="control has-icons-left">
+                                <input id="confirmPassword" type="password"
+                                    placeholder="******** (minimum 8 characters)" class="input password-input"
+                                    required />
+                                <span class="icon is-small is-left">
+                                    <i class="fa fa-lock"></i>
+                                </span>
+                            </div>
+                        </div>
+
                         <div class="field is-grouped is-grouped-right">
                             <button class="button is-success signup-button">
                                 Sign up
                             </button>
+                        </div>
+                        <div class="border-top pt-3">
+                            <small class="text-muted">
+                                Already Have An Account? <a class="ml-2" href="/login">Sign In</a>
+                            </small>
                         </div>
                     </form>
                 </div>

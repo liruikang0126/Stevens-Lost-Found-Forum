@@ -14,17 +14,19 @@ npm run dev
 
 - [x] Basic login function
 - [x] Post function
-- [x] delete comment function
-
-- [ ] Register function failed
-- [ ] add isAdmin to the signup handlebars file
+- [x] comment function
+- [x] Register function
+- [x] add isAdmin to the signup handlebars file
 - [ ] author_id => author name
 - [ ] client-side validation check
 - [ ] check and schedule router and middleware 
+- [ ] comment edit function
 - [ ] search bar for date, location and categories
 - [ ] comment limit function (one account can post only one comment in the post)
+- [ ] profile function
 - [ ] friends function
 - [ ] friend communication function
 - [ ] claim function
 - [ ] upload image function
-- [ ] map API ...
+- [ ] map API 
+
