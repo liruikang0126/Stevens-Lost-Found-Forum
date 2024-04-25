@@ -17,7 +17,7 @@ npm run dev
 - [x] delete comment function
 
 - [ ] Register function failed
-- [ ] add is Admin to the login handlebars file
+- [ ] add isAdmin to the signup handlebars file
 - [ ] author_id => author name
 - [ ] client-side validation check
 - [ ] check and schedule router and middleware 
@@ -27,4 +27,4 @@ npm run dev
 - [ ] friend communication function
 - [ ] claim function
 - [ ] upload image function
-- [ ] map API
+- [ ] map API ...
