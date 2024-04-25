@@ -10,7 +10,7 @@ import logoutRoutes from "./logout-routes.js";
 import dashboardRoutes from "./dashboard-routes.js";
 import editRoutes from "./edit-routes.js";
 
-//use each of the routes files in the controllers folder
+//use each of the routes files in the routes folder
 router.use("/", indexRoutes);
 router.use("/api", apiRoutes);
 router.use("/login", loginRoutes);
