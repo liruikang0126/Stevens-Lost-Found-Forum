@@ -11,8 +11,16 @@
         "dev": "nodemon app.js",
         "lint": "eslint ./"
     },
-    "author": "",
+    "repository": {
+      "type": "git",
+      "url": "git+ssh://git@github.com/liruikang0126/Stevens-Lost-Found-Forum.git"
+    },
+    "author": "CS546 Group 33",
     "license": "ISC",
+    "bugs": {
+      "url": "https://github.com/liruikang0126/Stevens-Lost-Found-Forum/issues"
+    },
+    "homepage": "https://github.com/liruikang0126/Stevens-Lost-Found-Forum#readme",
     "dependencies": {
         "bcrypt": "^5.0.1",
         "express": "^4.17.1",
@@ -25,4 +33,3 @@
         "eslint-config-google": "^0.14.0",
         "nodemon": "^2.0.12"
     }
-}
