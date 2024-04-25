@@ -1,0 +1,81 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>CS546 project</title>
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
+  <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.0/css/bulma.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
+  <link rel="stylesheet" href="../css/bulma-divider.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+
+<body>
+  <!-- START NAV -->
+  <nav class="navbar">
+    <div class="container">
+      {{! .navbar-brand for your company, product, or project name. }}
+      <div class="navbar-brand">
+        <a class="navbar-item" href="/">
+          <img class="main-logo" src="../images/logo.png" alt="Logo" />
+        </a>
+        <a class="navbar-item nav-title" href="/">
+          <strong>Lost and Found</strong>
+        </a>
+
+        {{! The navbar-burger is a hamburger menu that only appears on touch devices. }}
+        {{! It has to appear as the last child of navbar-brand. }}
+        <span class="navbar-burger burger" data-target="navbarMenu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </div>
+      {{! end of .navbar-brand}}
+
+      <div id="navbarMenu" class="navbar-menu">
+        <div class="navbar-end">
+          <a class="navbar-item is-active is-size-5 has-text-weight-semibold" href="/"><i class="fas fa-home"></i>
+            Home
+          </a>
+
+          {{#if loggedIn}}
+          {{#if loggedInUserData.isAdmin}}
+          <a class="navbar-item is-size-5 has-text-weight-semibold" href="/dashboard"><i class="fa fa-dashboard"></i>
+            Dashboard
+          </a>
+          {{/if}}
+          <a class="navbar-item is-size-5 has-text-weight-semibold" href="/logout/"><i class="fas fa-sign-out-alt"></i>
+            Logout
+          </a>
+          {{else}}
+          <a class="navbar-item is-size-5 has-text-weight-semibold" href="/login/"><i class="fas fa-user-tie"></i>
+            Login
+          </a>
+          <a class="navbar-item is-size-5 has-text-weight-semibold" href="/signup/"><i class="fas fa-sign-out-alt"></i>
+            Signup
+          </a>
+          {{/if}}
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!-- END NAV -->
+  {{{body}}}
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p>
+        <strong>CS546 Final Project</strong>
+        -
+        <a href="https://github.com/liruikang0126/Stevens-Lost-Found-Forum" target="_blank">Github Repository</a>
+        - Node.js, Express.js, Handlebars.js, MongoDB, Bulma
+      </p>
+    </div>
+    <div class="logged-in-user-id is-invisible">{{loggedInUserData._id}}</div>
+  </footer>
+  <script src="/js/main.js"></script>
+</body>
+
+</html>
