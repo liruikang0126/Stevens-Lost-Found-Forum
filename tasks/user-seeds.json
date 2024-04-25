@@ -1,0 +1,20 @@
+[
+    {
+        "username": "David Tunnell",
+        "email": "david_test@gmail.com",
+        "password": "12345AAA!",
+        "isAdmin": "true"
+    },
+    {
+        "username": "Testy McTesterson",
+        "email": "test_test@gmail.com",
+        "password": "12345AAA!",
+        "isAdmin": "false"
+    },
+    {
+        "username": "Luke Skywalker",
+        "email": "other_test@gmail.com",
+        "password": "12345AAA!",
+        "isAdmin": "false"
+    }
+]

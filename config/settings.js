@@ -1,4 +1,4 @@
 export const mongoConfig = {
-    serverUrl: 'mongodb://127.0.0.1:27017',
-    database: 'stevens_lost_found_forum'
-}
+  serverUrl: "mongodb://localhost:27017/",
+  database: "final_project_group33",
+};

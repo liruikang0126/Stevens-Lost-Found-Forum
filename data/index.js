@@ -1,7 +1,6 @@
-import postDataFunctions from './posts.js';
-import userDataFunctions from './users.js';
-import itemDataFunctions from './items.js';
+// import models
+import User from "./User.js";
+import Post from "./Post.js";
+import Comment from "./Comment.js";
 
-export const userData = userDataFunctions;
-export const postData = postDataFunctions;
-export const itemData = itemDataFunctions;
+export { User, Post, Comment };

@@ -1,25 +1,35 @@
 {
-  "name": "stevens-lost-found-forum",
-  "version": "1.0.0",
-  "description": "cs-546-final-project",
-  "main": "app.js",
-  "type": "module",
-  "scripts": {
-    "start": "node app.js",
-    "test": "node app.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/liruikang0126/Stevens-Lost-Found-Forum.git"
-  },
-  "author": "Ruikang Li 20026127",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/liruikang0126/Stevens-Lost-Found-Forum/issues"
-  },
-  "homepage": "https://github.com/liruikang0126/Stevens-Lost-Found-Forum#readme",
-  "dependencies": {
-    "express": "^4.19.2",
-    "mongodb": "^6.5.0"
-  }
-}
+    "name": "stevens-lost-found-forum",
+    "version": "1.0.0",
+    "description": "CS546 2024 Spring final project",
+    "main": "app.js",
+    "type": "module",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node app.js",
+        "seed": "node tasks/seed.js",
+        "dev": "nodemon app.js",
+        "lint": "eslint ./"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+ssh://git@github.com/liruikang0126/Stevens-Lost-Found-Forum.git"
+    },
+    "author": "CS546 Group 33",
+    "license": "ISC",
+    "bugs": {
+      "url": "https://github.com/liruikang0126/Stevens-Lost-Found-Forum/issues"
+    },
+    "homepage": "https://github.com/liruikang0126/Stevens-Lost-Found-Forum#readme",
+    "dependencies": {
+        "bcrypt": "^5.0.1",
+        "express": "^4.17.1",
+        "express-handlebars": "^5.3.3",
+        "express-session": "^1.17.2",
+        "mongodb": "^6.5.0"
+    },
+    "devDependencies": {
+        "eslint": "^7.32.0",
+        "eslint-config-google": "^0.14.0",
+        "nodemon": "^2.0.12"
+    }

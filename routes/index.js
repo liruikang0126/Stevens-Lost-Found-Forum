@@ -1,17 +1,22 @@
-import postRoutes from './posts.js';
-import userRoutes from './users.js';
-import itemRoutes from './items.js';
-//import authenticationRoute from './authentication.js';
+import { Router } from "express";
+const router = Router();
+//api requires can also be done separately
+import apiRoutes from "./api/index.js";
+import indexRoutes from "./index-routes.js";
+import loginRoutes from "./login-routes.js";
+import postRoutes from "./post-routes.js";
+import signupRoutes from "./signup-routes.js";
+import logoutRoutes from "./logout-routes.js";
+import dashboardRoutes from "./dashboard-routes.js";
+import editRoutes from "./edit-routes.js";
 
-const constructorMethod = (app) => {
-    app.use('/posts', postRoutes);
-    app.use('/users', userRoutes);
-    app.use('/items', itemRoutes);
-
-    //TODO: check below to be edited
-    app.use('*', (req, res) => {
-        res.status(404).json({error: 'Route Not found'});
-    });
-};
-
-export default constructorMethod;
+//use each of the routes files in the controllers folder
+router.use("/", indexRoutes);
+router.use("/api", apiRoutes);
+router.use("/login", loginRoutes);
+router.use("/post", postRoutes);
+router.use("/signup", signupRoutes);
+router.use("/logout", logoutRoutes);
+router.use("/dashboard", dashboardRoutes);
+router.use("/edit", editRoutes);
+export default router;
