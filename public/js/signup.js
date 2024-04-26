@@ -10,7 +10,7 @@ const signupFormHandler = async (event) => {
   let is_admin = role == "admin";
 
   try {
-    //client-side validation
+    // client-side validation
     username = helper.checkUsername(username);
     email = helper.checkEmail(email);
     password = helper.checkPassword(password, "password");

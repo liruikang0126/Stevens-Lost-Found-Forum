@@ -1,14 +1,14 @@
-[
+[    
+    {
+    "username": "Admin User",
+    "email": "cs546@gmail.com",
+    "password": "CS546!!!",
+    "isAdmin": true
+    },
     {
         "username": "David Tunnell",
         "email": "david_test@gmail.com",
         "password": "12345AAA!",
-        "isAdmin": true
-    },
-    {
-        "username": "Yunfei Tang",
-        "email": "TYf@tyf.tyf",
-        "password": "CS546!!!",
         "isAdmin": true
     },
     {

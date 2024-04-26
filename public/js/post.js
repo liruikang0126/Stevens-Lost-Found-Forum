@@ -1,14 +1,16 @@
 //submit a comment on the client to api
 const submitCommentHandler = async (event) => {
   event.preventDefault();
-  const comment = document.querySelector(".comment-input").value.trim();
+  let comment = document.querySelector(".comment-input").value;
   const author_id = document.querySelector(".logged-in-user-id").innerHTML; //need id of logged in user
   const post_id = document.querySelector(".current-post-id").innerHTML;
 
   if (!author_id) {
     document.location.replace("/login");
   } else {
-    if (comment) {
+    try {
+      // client-side validation
+      comment = helper.checkString(content, 2000, "comment");
       const response = await fetch("/api/comment/", {
         method: "POST",
         body: JSON.stringify({ comment, author_id, post_id }),
@@ -25,8 +27,8 @@ const submitCommentHandler = async (event) => {
             response.statusText
         );
       }
-    } else {
-      alert("Please fill out all fields.");
+    } catch (e) {
+      alert(e);
     }
   }
 };
@@ -65,3 +67,16 @@ const deleteLinks = document.querySelectorAll(".delete-comment");
 deleteLinks.forEach((el) =>
   el.addEventListener("click", (event) => deleteCommentHandler(event))
 );
+
+const helper = {
+  checkString(strVal, maxlen, varName) {
+    if (!strVal) throw `Error: You must supply a ${varName}!`;
+    if (typeof strVal !== "string") throw `Error: ${varName} must be a string!`;
+    strVal = strVal.trim();
+    if (strVal.length === 0)
+      throw `Error: ${varName} cannot be an empty string or string with just spaces`;
+    if (strVal.length > maxlen)
+      throw `Error: ${varName}'s length cannot exceed ${maxlen}`;
+    return strVal;
+  },
+};

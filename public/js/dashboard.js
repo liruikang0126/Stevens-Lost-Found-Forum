@@ -2,15 +2,19 @@
 const submitPostHandler = async (event) => {
   event.preventDefault();
 
-  const title = document.querySelector(".subject-input").value.trim();
-  const content = document.querySelector(".content-input").value.trim();
+  let title = document.querySelector(".subject-input").value;
+  let content = document.querySelector(".content-input").value;
+
   const author_id = document.querySelector(".logged-in-user-id").innerHTML; //need id of logged in user
   if (!author_id) {
     alert(
       "You can't post if not logged in. Please logout and in again and then try again."
     );
   } else {
-    if (title && content) {
+    try {
+      // client-side validation
+      title = helper.checkString(title, 100, "title");
+      content = helper.checkString(content, 2000, "content");
       const response = await fetch("/api/post/", {
         method: "POST",
         body: JSON.stringify({ title, content, author_id }),
@@ -26,8 +30,8 @@ const submitPostHandler = async (event) => {
             response.statusText
         );
       }
-    } else {
-      alert("Please fill out all fields.");
+    } catch (e) {
+      alert(e);
     }
   }
 };
@@ -62,4 +66,15 @@ deleteButtons.forEach((el) =>
   el.addEventListener("click", (event) => deletePostHandler(event))
 );
 
-const helper = {};
+const helper = {
+  checkString(strVal, maxlen, varName) {
+    if (!strVal) throw `Error: You must supply a ${varName}!`;
+    if (typeof strVal !== "string") throw `Error: ${varName} must be a string!`;
+    strVal = strVal.trim();
+    if (strVal.length === 0)
+      throw `Error: ${varName} cannot be an empty string or string with just spaces`;
+    if (strVal.length > maxlen)
+      throw `Error: ${varName}'s length cannot exceed ${maxlen}`;
+    return strVal;
+  },
+};

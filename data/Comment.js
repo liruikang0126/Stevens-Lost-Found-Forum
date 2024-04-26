@@ -37,6 +37,18 @@ const exportedMethods = {
     newPost = helper.stringifyPost(newPost);
     return newPost;
   },
+  async getAll() {
+    const postCollection = await posts();
+    let postList = await postCollection.find({}).toArray();
+    if (!postList) throw "Could not get all posts";
+    let commentList = postList
+      .map((e) => {
+        e = helper.stringifyPost(e);
+        return e.comments;
+      })
+      .flat(1);
+    return commentList;
+  },
   async getByCommentId(commentId) {
     commentId = helper.checkId(commentId, "commentId");
     const postCollection = await posts();
@@ -70,18 +82,6 @@ const exportedMethods = {
       throw `Error: Could not delete the comment with id of ${commentId}`;
     updateInfo = helper.stringifyPost(updateInfo);
     return updateInfo;
-  },
-  async getAll() {
-    const postCollection = await posts();
-    let postList = await postCollection.find({}).toArray();
-    if (!postList) throw "Could not get all posts";
-    let commentList = postList
-      .map((e) => {
-        e = helper.stringifyPost(e);
-        return e.comments;
-      })
-      .flat(1);
-    return commentList;
   },
 };
 

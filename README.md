@@ -10,6 +10,11 @@ npm run seed
 npm run dev
 ```
 
+Seeded Admin account (Required to see dashboard functionality!) credentials are:
+
+-   username: cs546@gmail.com
+-   password: CS546!!!
+
 ### Todo 
 
 - [x] Basic login function
@@ -18,8 +23,8 @@ npm run dev
 - [x] Register function
 - [x] add isAdmin to the signup handlebars file
 - [x] author_id => author name
-- [ ] client-side validation check
-- [ ] check and schedule router and middleware 
+- [x] client-side validation check
+- [x] check and schedule router and middleware 
 - [ ] comment edit function
 - [ ] comment limit function (one account can post only one comment in the post)
 - [ ] trending and latest posts page
@@ -33,4 +38,5 @@ npm run dev
 - [ ] Landing page design (purpose, motivation and contact)
 - [ ] Monthly list page of the kindest people
 - [ ] Admin page
+- [ ] Postman check every URL and relative written request methods
 
