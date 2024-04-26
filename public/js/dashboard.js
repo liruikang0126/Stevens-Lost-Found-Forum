@@ -61,3 +61,5 @@ const deleteButtons = document.querySelectorAll(".delete-post");
 deleteButtons.forEach((el) =>
   el.addEventListener("click", (event) => deletePostHandler(event))
 );
+
+const helper = {};

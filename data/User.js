@@ -10,7 +10,6 @@ const exportedMethods = {
     email = helper.checkEmail(email);
     password = helper.checkPassword(password);
     isAdmin = helper.checkIsAdmin(isAdmin);
-    let res = isAdmin === "true";
     const userCollection = await users();
     if (!userCollection) {
       throw "Database error";
@@ -26,7 +25,7 @@ const exportedMethods = {
       username,
       email,
       password: hash,
-      isAdmin: res,
+      isAdmin,
     };
     const insertInfo = await userCollection.insertOne(newUser);
     if (!insertInfo.acknowledged || !insertInfo.insertedId)

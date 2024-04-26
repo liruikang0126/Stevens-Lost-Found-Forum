@@ -52,3 +52,19 @@ nav.navbar {
     text-shadow: rgb(0, 0, 0);
     text-shadow: 1px 1px 1px rgb(97, 97, 97);
 }
+
+.register-hint{
+    color: gray;
+    font-size: small;
+    list-style-type: disc;
+    position: relative;
+    left: 40px;
+}
+.signup-role{
+    position: relative;
+    left: 40px;
+}
+.post-submit{
+    position: relative;
+    left: 400px;
+}
