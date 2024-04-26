@@ -16,7 +16,7 @@
                                 postData.createdAt
                                 }}</h2>
                             <h1 class="title">{{postData.title}}</h1>
-                            <h6>by {{postData.author_id}}</h6>
+                            <h6>by {{postData.author}}</h6>
                             <p>{{postData.content}}</p>
                         </div>
                     </div>
@@ -44,7 +44,7 @@
                     <div class="field-body">
                         <div class="field">
                             <div class="control">
-                                <button class="button is-success comment-submit">
+                                <button class="button is-success comment-submit post-submit">
                                     Submit
                                 </button>
                             </div>
@@ -58,7 +58,7 @@
                     <div class="message-body">
                         {{content}}
                         <p class="has-text-right"><strong>-
-                                {{author_id}},
+                                {{author}},
                                 {{format_time createdAt}}</strong>
                             {{#if ../loggedInUserData.isAdmin}}
                             (<span class="delete-comment" data-id="{{_id}}">Delete</span>)</p>

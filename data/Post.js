@@ -1,19 +1,23 @@
 import { posts } from "../config/mongoCollections.js";
 import { ObjectId } from "mongodb";
 import helper from "../utils/helpers.js";
+import User from "./User.js";
 
 const exportedMethods = {
   async create(title, content, author_id) {
     title = helper.checkString(title, 100, "title");
     content = helper.checkString(content, 2000, "content");
     author_id = helper.checkId(author_id, "author_id");
+    const user = await User.getByAuthorId(author_id);
+    const author = user.username;
     const postCollection = await posts();
-    let createdAt = new Date();
-    let updatedAt = new Date();
-    let newPost = {
+    const createdAt = new Date();
+    const updatedAt = new Date();
+    const newPost = {
       title,
       content,
       author_id: new ObjectId(author_id),
+      author,
       createdAt,
       updatedAt,
       comments: [],

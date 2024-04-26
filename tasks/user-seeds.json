@@ -3,18 +3,24 @@
         "username": "David Tunnell",
         "email": "david_test@gmail.com",
         "password": "12345AAA!",
-        "isAdmin": "true"
+        "isAdmin": true
+    },
+    {
+        "username": "Yunfei Tang",
+        "email": "TYf@tyf.tyf",
+        "password": "CS546!!!",
+        "isAdmin": true
     },
     {
         "username": "Testy McTesterson",
         "email": "test_test@gmail.com",
         "password": "12345AAA!",
-        "isAdmin": "false"
+        "isAdmin": false
     },
     {
         "username": "Luke Skywalker",
         "email": "other_test@gmail.com",
         "password": "12345AAA!",
-        "isAdmin": "false"
+        "isAdmin": false
     }
 ]
