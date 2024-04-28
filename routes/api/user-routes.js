@@ -1,7 +1,6 @@
 import { Router } from "express";
 export const router = Router();
 import { User } from "../../data/index.js";
-import withAuth from "../../utils/middleware.js";
 
 // CREATE new user
 router.post("/", async (req, res) => {
@@ -64,7 +63,7 @@ router.post("/login", async (req, res) => {
 });
 
 // User Logout
-router.post("/logout", withAuth, (req, res) => {
+router.post("/logout", (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {
       res.status(204).end();
