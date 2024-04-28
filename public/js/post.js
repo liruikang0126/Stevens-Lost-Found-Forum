@@ -10,7 +10,7 @@ const submitCommentHandler = async (event) => {
   } else {
     try {
       // client-side validation
-      comment = helper.checkString(content, 2000, "comment");
+      comment = helper.checkString(comment, 2000, "comment");
       const response = await fetch("/api/comment/", {
         method: "POST",
         body: JSON.stringify({ comment, author_id, post_id }),
