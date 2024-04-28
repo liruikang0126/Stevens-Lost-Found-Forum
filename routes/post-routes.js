@@ -1,8 +1,6 @@
 import { Router } from "express";
 const router = Router();
 import Post from "../data/Post.js";
-import User from "../data/User.js";
-import Comment from "../data/Comment.js";
 
 // on post page load render post data
 router.get("/:id", async (req, res) => {

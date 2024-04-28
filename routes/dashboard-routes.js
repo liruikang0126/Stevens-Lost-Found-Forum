@@ -5,7 +5,12 @@ import withAuth from "../utils/middleware.js";
 
 router.get("/", withAuth, async (req, res) => {
   try {
-    const posts = await Post.getAll();
+    let posts;
+    if (!req.session.loggedInUserData.isAdmin) {
+      posts = await Post.getByAuthorId(req.session.loggedInUserData._id);
+    } else {
+      posts = await Post.getAll();
+    }
     res.render("dashboard", {
       loggedIn: req.session.loggedIn,
       loggedInUserData: req.session.loggedInUserData,
