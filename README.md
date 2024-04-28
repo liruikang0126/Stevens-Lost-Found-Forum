@@ -48,4 +48,5 @@ Seeded Admin account (Required to see dashboard functionality!) credentials are:
 - [ ] Monthly list page of the kindest people
 - [ ] Admin page
 - [ ] Postman check every URL and relative written request methods
+- [x] not showing dashboard if  the user don't have post
 

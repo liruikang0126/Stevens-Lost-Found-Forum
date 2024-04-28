@@ -53,9 +53,6 @@ const exportedMethods = {
     let postList = await postCollection
       .find({ author_id: new ObjectId(id) })
       .toArray();
-    if (!postList.length) {
-      throw "No post with that Author ID";
-    }
     postList = postList.map((e) => {
       return helper.stringifyPost(e);
     });
