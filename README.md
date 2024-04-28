@@ -12,8 +12,17 @@ npm run dev
 
 Seeded Admin account (Required to see dashboard functionality!) credentials are:
 
--   username: cs546@gmail.com
--   password: CS546!!!
+- username: 
+
+  ``` username 
+  cs546@gmail.com
+  ```
+
+- password: 
+
+  ``` password 
+  CS546!!!
+  ```
 
 ### Todo 
 

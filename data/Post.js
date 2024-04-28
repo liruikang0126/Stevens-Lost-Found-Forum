@@ -68,7 +68,10 @@ const exportedMethods = {
     author_id = helper.checkId(author_id, "author_id");
     const postCollection = await posts();
     const postToUpdate = await this.getByPostId(postId);
-    if (!postToUpdate) throw "Product not found";
+    if (!postToUpdate) throw "Post not found";
+    if (author_id !== postToUpdate.author_id) {
+      throw "You are not the post owner, therefore you are not allowed to edit this post";
+    }
     let updatedAt = new Date();
     let newPost = {
       _id: postToUpdate._id,
