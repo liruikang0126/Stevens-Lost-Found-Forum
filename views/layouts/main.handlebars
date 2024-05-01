@@ -36,23 +36,65 @@
       {{! end of .navbar-brand}}
 
       <div id="navbarMenu" class="navbar-menu">
-        <div class="navbar-end">
-          <a class="navbar-item is-active is-size-5 has-text-weight-semibold" href="/"><i class="fas fa-home"></i>
+
+        <div class="navbar-start">
+          <a class="navbar-item  is-size-5 has-text-weight-semibold" href="/">
             Home
           </a>
 
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link is-size-5 has-text-weight-semibold">
+              Service
+            </a>
+
+            <div class="navbar-dropdown">
+              <a class="navbar-item">
+                Seeker
+              </a>
+              <a class="navbar-item is-selected">
+                Finder
+              </a>
+              <a class="navbar-item">
+                Search filters
+              </a>
+              <hr class="navbar-divider">
+              <a class="navbar-item" href="/about">
+                About
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="navbar-item field has-addons searchbar">
+          <div class="control">
+            <input class="input" type="text" placeholder="Search">
+          </div>
+          <div class="control">
+            <button class="button is-black">
+              Search
+            </button>
+          </div>
+        </div>
+
+        <div class="navbar-end">
+
           {{#if loggedIn}}
-          <a class="navbar-item is-size-5 has-text-weight-semibold" href="/dashboard"><i class="fa fa-dashboard"></i>
+          <a class="navbar-item is-size-5 has-text-weight-semibold" href="/dashboard"><i
+              class="fa fa-dashboard icon"></i>
             Dashboard
           </a>
-          <a class="navbar-item is-size-5 has-text-weight-semibold" href="/logout/"><i class="fas fa-sign-out-alt"></i>
+          <a class="navbar-item  is-size-5 has-text-weight-semibold"><i class="fas fa-user icon "></i>
+            Profile
+          </a>
+          <a class="navbar-item is-size-5 has-text-weight-semibold" href="/logout/"><i
+              class="fas fa-sign-out-alt icon "></i>
             Logout
           </a>
           {{else}}
-          <a class="navbar-item is-size-5 has-text-weight-semibold" href="/login/"><i class="fas fa-user-tie"></i>
+          <a class="navbar-item is-size-5 has-text-weight-semibold" href="/login/"><i class="fas fa-user-tie icon"></i>
             Login
           </a>
-          <a class="navbar-item is-size-5 has-text-weight-semibold" href="/signup/"><i class="fas fa-sign-out-alt"></i>
+          <a class="navbar-item is-size-5 has-text-weight-semibold" href="/signup/"><i
+              class="fas fa-sign-out-alt icon"></i>
             Signup
           </a>
           {{/if}}
