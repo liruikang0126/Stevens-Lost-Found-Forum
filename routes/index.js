@@ -19,4 +19,7 @@ router.use("/signup", signupRoutes);
 router.use("/logout", logoutRoutes);
 router.use("/dashboard", dashboardRoutes);
 router.use("/edit", editRoutes);
+router.use("*", (req, res) => {
+  res.sendStatus(404);
+});
 export default router;

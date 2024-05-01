@@ -31,11 +31,12 @@ nav.navbar {
     margin-top: -3em;
 }
 
-.delete-comment {
-    text-decoration: underline;
-}
 
 .delete-comment:hover {
+    cursor: pointer;
+}
+
+.edit-comment:hover {
     cursor: pointer;
 }
 

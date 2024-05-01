@@ -17,6 +17,12 @@ const exportedMethods = {
       return content;
     }
   },
+  show_edit(id1, id2) {
+    return id1 === id2;
+  },
+  show_delete(id1, id2, isAdmin) {
+    return id1 === id2 || isAdmin;
+  },
   checkString(strVal, maxlen, varName) {
     if (!strVal) throw `Error: You must supply a ${varName}!`;
     if (typeof strVal !== "string") throw `Error: ${varName} must be a string!`;

@@ -6,13 +6,14 @@ import userData from "./user-seeds.json" with { type: "json" };
 import postData from "./post-seeds.json" with { type: "json" };
 import commentData from "./comment-seeds.json" with { type: "json" };
 
+const db = await dbConnection();
 await seed();
 // await debugPosts();
 // await debugUsers();
 // await debugComments();
+await closeConnection();
 
 async function seed(){
-    const db = await dbConnection();
     await db.dropDatabase();
     try{
         await seedUsers();
@@ -22,7 +23,6 @@ async function seed(){
         console.log(e);
     }
     console.log("Done seeding database");
-    await closeConnection();
 }
 async function seedUsers(){
     for(let i in userData){
@@ -65,7 +65,6 @@ async function seedComments(){
     } 
 }
 async function debugUsers(){
-    const db = await dbConnection();
     const us=await users.getAll();
     try{
         const res=await users.getByEmail(us[0].email);
@@ -79,7 +78,6 @@ async function debugUsers(){
     }catch(e){
         console.log(e);
     }
-    await closeConnection();
 }
 async function debugPosts(){
     const ps=await posts.getAll();
@@ -116,7 +114,6 @@ async function debugPosts(){
     }catch(e){
         console.log(e);
     } 
-    await closeConnection();
 }
 async function debugComments(){
     const allComments=await comments.getAll();
@@ -131,8 +128,13 @@ async function debugComments(){
         // console.log(res);
     }catch(e){
         console.log(e);
-    } 
-    await closeConnection();
+    }
+    try{
+        const res=await comments.update(allComments[1]._id,"Updated comments");
+        console.log(res);
+    }catch(e){
+        console.log(e);
+    }  
 }
 
 

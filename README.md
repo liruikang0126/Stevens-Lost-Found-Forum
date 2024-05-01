@@ -42,13 +42,13 @@ Seeded Admin account (Required to see dashboard functionality!) credentials are:
 
 - [x] check and schedule router and middleware 
 
-- [ ] comment edit function
+- [x] comment edit function
 
-  Any user can edit and delete her/his own comments
+  Any user can edit and delete her/his own comments.
 
-  An admin can edit her/his own comments and delete all comments 
+  An admin can edit her/his own comments and delete all comments. 
 
-- [ ] comment limit function (one account can post only one comment in the post)
+- [x] comment limit function (one account can post only one comment in the post)
 
 - [ ] trending and latest posts page
 
@@ -70,9 +70,11 @@ Seeded Admin account (Required to see dashboard functionality!) credentials are:
 
 - [ ] Monthly list page of the kindest people
 
-- [ ] Admin page
-
 - [ ] Postman check every URL and relative written request methods
 
-- [x] not showing dashboard if  the user don't have post
+- [ ] AJAX
+
+- [ ] XSS
+
+- [ ] tota11y
 

@@ -80,3 +80,66 @@ const helper = {
     return strVal;
   },
 };
+
+// edit comments using ajax
+(function ($) {
+  $(".edit-comment").on("click", function (event) {
+    event.preventDefault();
+    const commentId = $(this).attr("data-id");
+    const comment = $(`#comment-${commentId}`);
+    let element = $(
+      `<div class="field" id="comment-${commentId}-element">
+        <div class="control">
+            <br/>
+            <textarea class="textarea comment-input" id="comment-${commentId}-edit"
+                ">${comment.text()}</textarea>
+        </div>
+      </div> 
+      <input id="comment-${commentId}-cancel" type="button" value="Cancel">
+      </input>
+      <input id="comment-${commentId}-submit" type="button" value="Submit">
+      </input>`
+    );
+    const commentDiv = $(`#comment-${commentId}-div`);
+    if ($(`#comment-${commentId}-element`).length == 0) {
+      commentDiv.append(element);
+    }
+    $(`#comment-${commentId}-cancel`).on("click", function () {
+      element.remove();
+    });
+    $(`#comment-${commentId}-submit`).on("click", function () {
+      let newComment = $(`#comment-${commentId}-edit`).val();
+      element.remove();
+      let requestConfig = {
+        method: "PUT",
+        url: "/api/comment/" + commentId,
+        contentType: "application/json",
+        data: JSON.stringify({
+          content: newComment,
+        }),
+      };
+      $.ajax(requestConfig).then(function (responseMessage) {
+        let data = responseMessage;
+        comment.replaceWith(
+          `<span id="comment-${commentId}">${data.content}<\span>`
+        );
+        $(`#comment-${commentId}-updatedAt`).replaceWith(
+          `<span id="comment-{{_id}}-updatedAt">${format_time(
+            data.updatedAt
+          )}<\span>`
+        );
+      });
+    });
+  });
+})(jQuery); // jQuery is exported as $ and jQuery
+
+function format_time(date) {
+  //'toLocaleTimeString()' method to format the time with custom parameters
+  return new Date(date).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+  });
+}
