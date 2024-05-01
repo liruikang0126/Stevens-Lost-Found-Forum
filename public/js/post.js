@@ -110,6 +110,11 @@ const helper = {
     $(`#comment-${commentId}-submit`).on("click", function () {
       let newComment = $(`#comment-${commentId}-edit`).val();
       element.remove();
+      try {
+        checkString(newComment, 2000, "comment");
+      } catch (e) {
+        alert(e);
+      }
       let requestConfig = {
         method: "PUT",
         url: "/api/comment/" + commentId,
@@ -142,4 +147,15 @@ function format_time(date) {
     hour: "numeric",
     minute: "numeric",
   });
+}
+
+function checkString(strVal, maxlen, varName) {
+  if (!strVal) throw `Error: You must supply a ${varName}!`;
+  if (typeof strVal !== "string") throw `Error: ${varName} must be a string!`;
+  strVal = strVal.trim();
+  if (strVal.length === 0)
+    throw `Error: ${varName} cannot be an empty string or string with just spaces`;
+  if (strVal.length > maxlen)
+    throw `Error: ${varName}'s length cannot exceed ${maxlen}`;
+  return strVal;
 }
