@@ -75,6 +75,63 @@ const exportedMethods = {
     }
     return true;
   },
+
+  async getUserProfile(userId) {
+    userId = helper.checkId(userId, "user_id");  // 确保用户 ID 是有效的
+    const userCollection = await users();
+    const userProfile = await userCollection.findOne({
+      _id: new ObjectId(userId)
+    }, {
+      projection: { password: 0 }  // 不返回密码字段
+    });
+    if (!userProfile) {
+      throw new Error("User not found");  // 如果没有找到用户，抛出异常
+    }
+
+    // 获取并格式化朋友列表的数据
+    const friendsList = await userCollection.find({
+      _id: { $in: userProfile.friends.map(id => new ObjectId(id)) }
+    }).toArray();
+
+    return {
+      ...userProfile,
+      friends: friendsList.map(friend => ({ id: friend._id.toString(), name: friend.username }))
+    };
+  },
+
+  // async updateUserProfile(userId, updateData) {
+  //   userId = helper.checkId(userId, "user_id");  // 确保用户ID有效
+  //   const userCollection = await users();
+  //   const updateResult = await userCollection.updateOne(
+  //     { _id: new ObjectId(userId) },
+  //     { $set: updateData }
+  //   );
+  //   if (updateResult.modifiedCount === 0) {
+  //     throw new Error("No changes were made to the profile.");
+  //   }
+  //   return updateResult;
+  // }
+
+  async updateUserProfile(userId, updateData) {
+    const userCollection = await users();
+    const updateObj = {};
+
+    // 只更新提供的字段
+    if (updateData.username) updateObj.username = updateData.username;
+    if (updateData.email) updateObj.email = updateData.email;
+    if (updateData.phoneNumber) updateObj.phoneNumber = updateData.phoneNumber;
+    if (updateData.password) updateObj.password = await bcrypt.hash(updateData.password, saltRounds);
+
+    const updateResult = await userCollection.updateOne(
+      { _id: new ObjectId(userId) },
+      { $set: updateObj }
+    );
+    if (updateResult.modifiedCount === 0) throw new Error('No changes were made');
+
+    return getUserProfile(userId);  // 返回更新后的用户信息
+  }
+
+
 };
 
 export default exportedMethods;
