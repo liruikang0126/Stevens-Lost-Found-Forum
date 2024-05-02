@@ -75,6 +75,7 @@ const exportedMethods = {
       title,
       content,
       author_id,
+      author: postToUpdate.author,
       createdAt: postToUpdate.createdAt,
       updatedAt,
       comments: postToUpdate.comments,
