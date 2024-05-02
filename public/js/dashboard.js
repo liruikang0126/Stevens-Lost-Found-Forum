@@ -27,7 +27,7 @@ const submitPostHandler = async (event) => {
           "Failed to submit post. " +
             response.status +
             ": " +
-            response.statusText
+            (await response.json())
         );
       }
     } catch (e) {
@@ -50,7 +50,10 @@ const deletePostHandler = async (event) => {
       document.location.replace("/dashboard");
     } else {
       alert(
-        "Failed to delete post. " + response.status + ": " + response.statusText
+        "Failed to delete post. " +
+          response.status +
+          ": " +
+          (await response.json())
       );
     }
   }

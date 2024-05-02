@@ -29,7 +29,7 @@ const submitPostHandler = async (event) => {
           "Failed to update post. " +
             response.status +
             ": " +
-            response.statusText
+            (await response.json())
         );
       }
     } catch (e) {

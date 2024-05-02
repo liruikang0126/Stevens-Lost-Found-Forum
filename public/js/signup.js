@@ -30,7 +30,7 @@ const signupFormHandler = async (event) => {
       document.location.replace("/");
     } else {
       alert(
-        "Failed to sign up. " + response.status + ": " + response.statusText
+        "Failed to sign up. " + response.status + ": " + (await response.json())
       );
     }
   } catch (e) {

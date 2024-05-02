@@ -1,12 +1,27 @@
 <!-- Image -->
-<section class="hero ">
+
+<section class="hero">
   <div class="hero-body">
     <div class="container">
       <div class="columns">
         <div class="column is-8 is-offset-2">
-          <figure class="image is-16by9">
-            <a href="/post/{{posts.0.0._id}}"><img src="../images/first-post.png" alt=""></a>
-          </figure>
+          <div class="box">
+            <h1 class="title">Found-item List for Seekers</h1>
+            <div class="tabs is-boxed">
+              <ul>
+                <li class="is-active">
+                  <a>
+                    <span>Hottest</span>
+                  </a>
+                </li>
+                <li>
+                  <a>
+                    <span>Latest</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
       <section class="section">
@@ -26,7 +41,7 @@
   </div>
 </section>
 <!-- Articles -->
-<section class="hero ">
+<section class="hero">
   <div class="hero-body-neg">
     <div class="container">
       {{#each posts as |post|}}

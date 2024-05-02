@@ -24,7 +24,7 @@ const submitCommentHandler = async (event) => {
           "Failed to submit comment. " +
             response.status +
             ": " +
-            response.statusText
+            (await response.json())
         );
       }
     } catch (e) {
@@ -51,7 +51,10 @@ const deleteCommentHandler = async (event) => {
       document.location.reload();
     } else {
       alert(
-        "Failed to delete post. " + response.status + ": " + response.statusText
+        "Failed to delete post. " +
+          response.status +
+          ": " +
+          (await response.json())
       );
     }
   }
@@ -95,10 +98,12 @@ const helper = {
                 ">${comment.text()}</textarea>
         </div>
       </div> 
-      <input id="comment-${commentId}-cancel" type="button" value="Cancel">
-      </input>
-      <input id="comment-${commentId}-submit" type="button" value="Submit">
-      </input>`
+      <div class="is-pulled-right">
+      <button id="comment-${commentId}-cancel" class="button ">Cancel</button>
+      <button id="comment-${commentId}-submit" class="button is-primary">Save changes</button>
+      </div>
+      
+      `
     );
     const commentDiv = $(`#comment-${commentId}-div`);
     if ($(`#comment-${commentId}-element`).length == 0) {
