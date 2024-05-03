@@ -60,14 +60,20 @@
                         <span id="comment-{{_id}}">{{content}}</span>
                         <p class="has-text-right"><strong>-
                                 {{author}},
-                                <span id="comment-{{_id}}-updatedAt">{{format_time updatedAt}}</span></strong>
+                                <span id="comment-{{_id}}-updatedAt">{{format_time updatedAt}}</span></strong></p>
+                        <br />
+                        <div class="buttons is-right">
                             {{#if (show_edit ../loggedInUserData._id author_id) }}
-                            <i class="fa fa-edit edit-comment" data-id="{{_id}}" aria-hidden="true"></i>
+                            <button class="button edit-comment is-info" data-id="{{_id}}"> <i class="fa fa-edit icon2"
+                                    aria-hidden="true"></i>Edit</button>
+
                             {{/if}}
                             {{#if (show_delete ../loggedInUserData._id author_id ../loggedInUserData.isAdmin) }}
-                            <i class="fa fa-trash delete-comment" data-id="{{_id}}" aria-hidden="true"></i>
+                            <button class="button delete-comment is-danger" data-id="{{_id}}"><i
+                                    class="fa fa-trash icon2" data-id="{{_id}}" aria-hidden="true"></i>Delete</button>
+
                             {{/if}}
-                        </p>
+                        </div>
                     </div>
                 </article>
                 {{/each}}

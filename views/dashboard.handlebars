@@ -1,26 +1,124 @@
 <section class="hero has-background-grey-lighter">
     <div class="hero-body">
         <div class="container">
-            <div class="columns is-centered">
-                <div class="column">
+            <div class="columns">
+                <div class="column is-8 is-offset-2">
                     <form class="box">
                         <label class="label is-large" class="label">Create New
-                            Blog Post</label>
-                        <div class="field">
-                            <label class="label">Subject / Title</label>
-                            <div class="control">
-                                <input type="text"
-                                    placeholder="10 Ways Express.js Makes Creating REST API's Easier (maximum 100 characters) "
-                                    class="input subject-input" required />
+                            Report</label>
+                        {{!-- title --}}
+                        <div class="field is-horizontal">
+                            <div class="field-label  is-normal">
+                                <label class="label">Title</label>
+                            </div>
+                            <div class="field-body">
+                                <div class="field">
+                                    <div class="control">
+                                        <input class="input subject-input" type="text" placeholder="Text input"
+                                            required>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="field-body">
-                            <div class="field">
-                                <label class="label">Content</label>
-                                <div class="control">
-                                    <textarea class="textarea content-input"
-                                        placeholder="Building an API is a rewarding way to allow data to flow between apps and create compelling functionality in your latest project without having to start from scratch... (maximum 2000 characters) "
-                                        required></textarea>
+                        {{!-- status --}}
+                        <div class="field is-horizontal">
+                            <div class="field-label">
+                                <label class="label">Status</label>
+                            </div>
+                            <div class="field-body">
+                                <div class="field is-narrow">
+                                    <div class="control">
+                                        <label class="radio">
+                                            <input class="form-check-input" type="radio" name="lostOrFound"
+                                                id="gridRadios2" value="lost" checked>
+                                            Lost
+                                        </label>
+                                        <label class="radio">
+                                            <input class="form-check-input" type="radio" name="lostOrFound"
+                                                id="gridRadios2" value="found">
+                                            Found
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{!-- category --}}
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">Category</label>
+                            </div>
+                            <div class="field-body">
+                                <div class="field is-narrow">
+                                    <div class="control">
+                                        <div class="select is-fullwidth">
+                                            <select id="category">
+                                                <option value="Electonics">Electonics</option>
+                                                <option value="Clothing">Clothing</option>
+                                                <option value="Accessories">Accessories</option>
+                                                <option value="Other">Other</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{!-- date --}}
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">Date</label>
+                            </div>
+                            <div class="field-body">
+                                <div class="field is-narrow">
+                                    <div class="control">
+                                        <input class="input" id="date" type="date" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{!-- location --}}
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">Location</label>
+                            </div>
+                            <div class="field-body">
+                                <div class="field is-narrow">
+                                    <div class="control">
+                                        <div class="select is-fullwidth">
+                                            <select id="location">
+                                                <option value="Gateway South">Gateway South</option>
+                                                <option value="Gateway North">Gateway North</option>
+                                                <option value="Other">Other</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{!-- content --}}
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">Description</label>
+                            </div>
+                            <div class="field-body">
+                                <div class="field">
+                                    <div class="control">
+                                        <textarea class="textarea content-input"
+                                            placeholder="Please describe the item and specific situation (maximum 2000 characters) "
+                                            required></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{!-- file --}}
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">Upload photo</label>
+                            </div>
+                            <div class="field-body">
+                                <div class="field">
+                                    <div class="control">
+                                        <input class="input" id="upload" type="file" accept=".jpg" required>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -41,7 +139,7 @@
             <div class="columns is-centered">
                 <div class="column">
                     <form class="box">
-                        <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+                        <table id="table" class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
                             <thead>
                                 <tr>
                                     <th class="table-id">ID</th>

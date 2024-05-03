@@ -2,9 +2,21 @@ import { Router } from "express";
 export const router = Router();
 import { Post } from "../../data/index.js";
 import withAuth from "../../utils/middleware.js";
+import multer from "multer";
+import * as path from "path";
 
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "uploads/");
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + path.extname(file.originalname));
+  },
+});
+
+var upload = multer({ storage: storage });
 //create post
-router.post("/", withAuth, async (req, res) => {
+router.post("/", withAuth, upload.single("image"), async (req, res) => {
   try {
     if (req.session.loggedInUserData._id !== req.body.author_id)
       throw "Author_id provided is not same as that of the current user";
@@ -15,6 +27,11 @@ router.post("/", withAuth, async (req, res) => {
     const dbPostData = await Post.create(
       req.body.title,
       req.body.content,
+      req.file,
+      req.body.category,
+      req.body.date,
+      req.body.location,
+      req.body.lostOrFound,
       req.body.author_id
     );
     return res.status(200).json(dbPostData);

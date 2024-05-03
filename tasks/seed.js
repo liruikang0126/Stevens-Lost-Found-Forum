@@ -7,8 +7,8 @@ import postData from "./post-seeds.json" with { type: "json" };
 import commentData from "./comment-seeds.json" with { type: "json" };
 
 const db = await dbConnection();
-await seed();
-// await debugPosts();
+// await seed();
+await debugPosts();
 // await debugUsers();
 // await debugComments();
 await closeConnection();
@@ -51,7 +51,7 @@ async function seedPosts(){
 async function seedComments(){
     const us=await users.getAll();
     const lus=us.length;
-    const ps=await posts.getAll();
+    const ps=await posts.getAllLatest();
     let lps=ps.length;
     for(let i in commentData){
         try{
@@ -80,10 +80,10 @@ async function debugUsers(){
     }
 }
 async function debugPosts(){
-    const ps=await posts.getAll();
+    const ps=await posts.getAllLatest();
     const us=await users.getAll();
     try{
-        const res =await posts.getAll();
+        const res =await posts.getAllHottest();
         // console.log(res);
     }catch(e){
         console.log(e);
@@ -109,7 +109,7 @@ async function debugPosts(){
     }
     
     try{
-        const res =await posts.destroy(ps[0]._id)
+        // const res =await posts.destroy(ps[0]._id)
         // console.log(res);
     }catch(e){
         console.log(e);

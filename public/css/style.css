@@ -60,7 +60,7 @@ nav.navbar {
     position: relative;
     left: 40px;
 }
-.signup-role{
+.signup-role,.signup-status{
     position: relative;
     left: 40px;
 }
@@ -71,7 +71,7 @@ nav.navbar {
 }
 .icon{
     position: relative;
-    right:4px;
+    right:2px;
     top:3px;
 }
 
@@ -79,4 +79,13 @@ nav.navbar {
     max-width: 100%;
 	max-height: 100%;
     object-fit: contain;
+}
+.box{
+    position: relative;
+    bottom: 40px;
+}
+.icon2{
+    position: relative;
+    right: 5px;
+    top: 1px;
 }

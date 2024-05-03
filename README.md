@@ -78,3 +78,15 @@ Seeded Admin account (Required to see dashboard functionality!) credentials are:
 
 - [ ] tota11y
 
+- [ ] 注册完没有登陆，显示了dashboard和profile
+
+- [ ] refactor service using ajax and API instead of add routes
+
+- [ ] type check in client side validation, routes, data file folders
+
+- [ ] data folder other functions change
+
+- [ ] database seed file change
+
+- [ ] handlebars changes
+

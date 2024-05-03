@@ -10,7 +10,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
   <link rel="stylesheet" href="../css/bulma-divider.css" />
   <link rel="stylesheet" href="../css/style.css" />
-  <link rel="stylesheet" href="../css/main.css" />
 </head>
 
 <body>
@@ -49,13 +48,10 @@
             </a>
 
             <div class="navbar-dropdown">
-              <a class="navbar-item">
-                Seeker
+              <a href="/service" class="navbar-item">
+                Service
               </a>
-              <a class="navbar-item is-selected">
-                Finder/Helper
-              </a>
-              <a class="navbar-item">
+              <a href="/filter" class="navbar-item">
                 Search filters
               </a>
               <hr class="navbar-divider">
@@ -65,7 +61,7 @@
             </div>
           </div>
         </div>
-        <div class="navbar-item field has-addons searchbar">
+        {{!-- <div class="navbar-item field has-addons searchbar">
           <div class="control">
             <input class="input" type="text" placeholder="Search">
           </div>
@@ -74,7 +70,7 @@
               Search
             </button>
           </div>
-        </div>
+        </div> --}}
 
         <div class="navbar-end">
 
@@ -83,7 +79,7 @@
               class="fa fa-dashboard icon"></i>
             Dashboard
           </a>
-          <a class="navbar-item  is-size-5 has-text-weight-semibold"><i class="fas fa-user icon "></i>
+          <a class="navbar-item  is-size-5 has-text-weight-semibold" href="/profile"><i class="fas fa-user icon "></i>
             {{loggedInUserData.username}}
           </a>
           <a class="navbar-item is-size-5 has-text-weight-semibold" href="/logout/"><i
@@ -116,6 +112,9 @@
     </div>
     <div class="logged-in-user-id is-invisible">{{loggedInUserData._id}}</div>
   </footer>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
+    crossorigin="anonymous"></script>
   <script src="/js/main.js"></script>
 </body>
 

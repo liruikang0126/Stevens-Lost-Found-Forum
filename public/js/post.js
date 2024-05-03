@@ -93,17 +93,13 @@ const helper = {
     let element = $(
       `<div class="field" id="comment-${commentId}-element">
         <div class="control">
-            <br/>
             <textarea class="textarea comment-input" id="comment-${commentId}-edit"
                 ">${comment.text()}</textarea>
         </div>
       </div> 
-      <div class="is-pulled-right">
-      <button id="comment-${commentId}-cancel" class="button ">Cancel</button>
-      <button id="comment-${commentId}-submit" class="button is-primary">Save changes</button>
-      </div>
-      
-      `
+      <div class="buttons is-right">
+            <button id="comment-${commentId}-cancel" class="button ">Cancel</button>
+            <button id="comment-${commentId}-submit" class="button is-primary">Save changes</button>    </div>  `
     );
     const commentDiv = $(`#comment-${commentId}-div`);
     if ($(`#comment-${commentId}-element`).length == 0) {

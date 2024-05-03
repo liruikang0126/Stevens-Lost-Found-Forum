@@ -3,7 +3,12 @@ const submitPostHandler = async (event) => {
   event.preventDefault();
 
   let title = document.querySelector(".subject-input").value;
+  let lostOrFound = $(":radio[name=lostOrFound]:checked").val();
+  let date = document.getElementById("date").value;
+  let category = document.getElementById("category").value;
+  let location = document.getElementById("location").value;
   let content = document.querySelector(".content-input").value;
+  let image = document.getElementById("upload").files[0];
 
   const author_id = document.querySelector(".logged-in-user-id").innerHTML; //need id of logged in user
   if (!author_id) {
@@ -15,13 +20,32 @@ const submitPostHandler = async (event) => {
       // client-side validation
       title = helper.checkString(title, 100, "title");
       content = helper.checkString(content, 2000, "content");
+      const formData = new FormData();
+      formData.append("title", title);
+      formData.append("lostOrFound", lostOrFound);
+      formData.append("date", date);
+      formData.append("category", category);
+      formData.append("location", location);
+      formData.append("content", content);
+      formData.append("image", image);
+      formData.append("author_id", author_id);
       const response = await fetch("/api/post/", {
         method: "POST",
-        body: JSON.stringify({ title, content, author_id }),
-        headers: { "Content-Type": "application/json" },
+        body: formData,
       });
       if (response.ok) {
-        document.location.replace("/dashboard");
+        Swal.fire({
+          title: "Submitted",
+          text: "You have submitted the report!",
+          icon: "success",
+          confirmButtonText: "OK",
+        });
+        var delayInMilliseconds = 1000;
+
+        setTimeout(function () {
+          //your code to be executed after seconds
+          document.location.replace("/dashboard");
+        }, delayInMilliseconds);
       } else {
         alert(
           "Failed to submit post. " +
@@ -47,7 +71,18 @@ const deletePostHandler = async (event) => {
       headers: { "Content-Type": "application/json" },
     });
     if (response.ok) {
-      document.location.replace("/dashboard");
+      Swal.fire({
+        title: "Deleted",
+        text: "You have deleted the report!",
+        icon: "success",
+        confirmButtonText: "OK",
+      });
+      var delayInMilliseconds = 1000;
+
+      setTimeout(function () {
+        //your code to be executed after seconds
+        document.location.replace("/dashboard");
+      }, delayInMilliseconds);
     } else {
       alert(
         "Failed to delete post. " +

@@ -2,9 +2,22 @@ import { posts } from "../config/mongoCollections.js";
 import { ObjectId } from "mongodb";
 import helper from "../utils/helpers.js";
 import User from "./User.js";
+import * as fs from "fs";
+import { dirname } from "path";
+import { fileURLToPath } from "url";
+import path from "path";
 
 const exportedMethods = {
-  async create(title, content, author_id) {
+  async create(
+    title,
+    content,
+    image,
+    category,
+    date,
+    location,
+    lostOrFound,
+    author_id
+  ) {
     title = helper.checkString(title, 100, "title");
     content = helper.checkString(content, 2000, "content");
     author_id = helper.checkId(author_id, "author_id");
@@ -15,9 +28,16 @@ const exportedMethods = {
     const updatedAt = new Date();
     const newPost = {
       title,
-      content,
       author_id: new ObjectId(author_id),
       author,
+      content,
+      image,
+      category,
+      date,
+      location,
+      lostOrFound,
+      isCompleted: false,
+      completer_id: null,
       createdAt,
       updatedAt,
       comments: [],
@@ -27,12 +47,24 @@ const exportedMethods = {
       throw "Could not add user";
     return { insertedPost: true };
   },
-  async getAll() {
+  async getAllLatest() {
     const postCollection = await posts();
     let postList = await postCollection
       .find({})
       .sort({ createdAt: -1 })
       .toArray();
+    if (!postList) throw "Could not get all posts";
+    postList = postList.map((e) => {
+      return helper.stringifyPost(e);
+    });
+    return postList;
+  },
+  async getAllHottest() {
+    const postCollection = await posts();
+    let postList = await postCollection.find({}).toArray();
+    postList.sort(function (a, b) {
+      return b.comments.length - a.comments.length;
+    });
     if (!postList) throw "Could not get all posts";
     postList = postList.map((e) => {
       return helper.stringifyPost(e);
@@ -93,6 +125,27 @@ const exportedMethods = {
   },
   async destroy(postId) {
     postId = helper.checkId(postId, "postId");
+
+    const __filename = fileURLToPath(import.meta.url);
+    let __dirname = dirname(__filename);
+    __dirname = __dirname.substring(0, __dirname.lastIndexOf("\\"));
+    const post = await this.getByPostId(postId);
+    const deletePath = path.join(
+      __dirname,
+      `${post.image.destination}${post.image.filename}`
+    );
+    // Asynchronously delete a file
+    fs.unlink(deletePath, (err) => {
+      if (err) {
+        // Handle specific error if any
+        if (err.code === "ENOENT") {
+          throw "Image does not exist.";
+        } else {
+          throw err;
+        }
+      }
+    });
+
     const postCollection = await posts();
     const deletionInfo = await postCollection.findOneAndDelete({
       _id: new ObjectId(postId),
