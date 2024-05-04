@@ -64,7 +64,7 @@ Seeded Admin account (Required to see dashboard functionality!) credentials are:
 
 - [x] not show dashboard和profile immediately after registration without login
 
-- [ ] claim function
+- [x] claim function
 
 - [ ] search bar for date, location and categories
 

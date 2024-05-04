@@ -76,7 +76,7 @@ const completePostHandler = async (event) => {
     if (response.ok) {
       Swal.fire({
         title: "Completed",
-        text: "Thank you for joining us on this endeavor towards practicality and community assistance.",
+        text: "Thank you for joining us on this endeavor towards community assistance.",
         icon: "success",
       });
       var delayInMilliseconds = 1000;
@@ -106,11 +106,11 @@ const deleteLinks = document.querySelectorAll(".delete-comment");
 deleteLinks.forEach((el) =>
   el.addEventListener("click", (event) => deleteCommentHandler(event))
 );
-
-document
-  .querySelector(".complete")
-  .addEventListener("click", completePostHandler);
-
+if (document.querySelector(".complete")) {
+  document
+    .querySelector(".complete")
+    .addEventListener("click", completePostHandler);
+}
 const helper = {
   checkString(strVal, maxlen, varName) {
     if (!strVal) throw `Error: You must supply a ${varName}!`;
