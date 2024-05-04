@@ -1,27 +1,171 @@
 [
     {
-        "title": "What is Lorem Ipsum?",
-        "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-        "author_id": "0"
+        "title": "Lost: Apple Watch Series 6 in Gateway South",
+        "content": "I lost my Apple Watch Series 6 in Gateway South near the fountain. It has a silver aluminum case with a white sport band. If found, please contact me. The watch has a scratch on the screen.",
+        "author_id": "0",
+        "image": {
+            "destination": "public/uploads/",
+            "filename": "watch.jpg"
+        },
+        "category": "Electronics",
+        "date": "2023-04-01",
+        "location": "Gateway South",
+        "lostOrFound": "lost"
     },
     {
-        "title": "Why do we use it?",
-        "content": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).",
-        "author_id": "1"
+        "title": "Found: Set of Keys near Gateway North",
+        "content": "I found a set of keys near Gateway North. It includes a car key, a house key, and a few others. Contact me with a description to claim.",
+        "author_id": "1",
+        "image": {
+            "destination": "public/uploads/",
+            "filename": "keys.jpg"
+        },
+        "category": "Accessories",
+        "date": "2023-04-02",
+        "location": "Gateway North",
+        "lostOrFound": "found"
     },
     {
-        "title": "Where can I get some?",
-        "content": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomized words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.",
-        "author_id": "2"
+        "title": "Lost: Black Leather Jacket in the city park",
+        "content": "I lost my favorite black leather jacket in the city park near the main entrance. It has a small rip on the left sleeve. Reward offered for its return.",
+        "author_id": "2",
+        "image": {
+            "destination": "public/uploads/",
+            "filename": "jacket.jpg"
+        },
+        "category": "Clothing",
+        "date": "2023-04-03",
+        "location": "Gateway South",
+        "lostOrFound": "lost"
     },
     {
-        "title": "The standard Lorem Ipsum passage, used since the 1500s",
-        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        "author_id": "3"
+        "title": "Found: Silver Bracelet on the beach",
+        "content": "Found a silver bracelet on the beach near the lifeguard tower. Describe it to claim.",
+        "author_id": "3",
+        "image": {
+            "destination": "public/uploads/",
+            "filename": "bracelet.jpg"
+        },
+        "category": "Accessories",
+        "date": "2023-04-04",
+        "location": "Other",
+        "lostOrFound": "found"
     },
     {
-        "title": "Section 1.10.32 of 'de Finibus Bonorum et Malorum', written by Cicero in 45 BC",
-        "content": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?",
-        "author_id": "4"
+        "title": "Lost: Dell Laptop Bag in the office cafeteria",
+        "content": "I left my black Dell laptop bag in the office cafeteria. It contains my laptop, charger, and important documents. Reward offered for its return.",
+        "author_id": "4",
+        "image": {
+            "destination": "public/uploads/",
+            "filename": "laptop_bag.jpg"
+        },
+        "category": "Electronics",
+        "date": "2023-04-05",
+        "location": "Other",
+        "lostOrFound": "lost"
+    },
+    {
+        "title": "Found: Sunglasses on the bus",
+        "content": "Found a pair of sunglasses on the bus. Contact me with a description to claim.",
+        "author_id": "5",
+        "image": {
+            "destination": "public/uploads/",
+            "filename": "sunglasses.jpg"
+        },
+        "category": "Accessories",
+        "date": "2023-04-06",
+        "location": "Other",
+        "lostOrFound": "found"
+    },
+    {
+        "title": "Lost: iPhone with Blue Case near the train station",
+        "content": "I lost my black iPhone with a cracked screen near the train station. It has a blue case with a white pattern on it. Reward offered for its return.",
+        "author_id": "6",
+        "image": {
+            "destination": "public/uploads/",
+            "filename": "phone.jpg"
+        },
+        "category": "Electronics",
+        "date": "2023-04-07",
+        "location": "Other",
+        "lostOrFound": "lost"
+    },
+    {
+        "title": "Found: Wallet in the shopping mall",
+        "content": "Found a wallet in the shopping mall near the food court. Please provide identification to claim.",
+        "author_id": "7",
+        "image": {
+            "destination": "public/uploads/",
+            "filename": "wallet.jpg"
+        },
+        "category": "Accessories",
+        "date": "2023-04-08",
+        "location": "Other",
+        "lostOrFound": "found"
+    },
+    {
+        "title": "Lost: Blue Umbrella in the office lobby",
+        "content": "I lost my blue umbrella with a wooden handle in the office lobby near the reception area. Reward offered for its return.",
+        "author_id": "8",
+        "image": {
+            "destination": "public/uploads/",
+            "filename": "umbrella.jpg"
+        },
+        "category": "Accessories",
+        "date": "2023-04-09",
+        "location": "Gateway South",
+        "lostOrFound": "lost"
+    },
+    {
+        "title": "Found: Necklace near the Playground in the park",
+        "content": "Found a necklace in the park near the playground. Describe it to claim.",
+        "author_id": "9",
+        "image": {
+            "destination": "public/uploads/",
+            "filename": "necklace.jpg"
+        },
+        "category": "Accessories",
+        "date": "2023-04-10",
+        "location": "Gateway North",
+        "lostOrFound": "found"
+    },
+    {
+        "title": "Lost: Nike Backpack at the gym",
+        "content": "I lost my black Nike backpack at the gym near the locker rooms. It contains my workout clothes and water bottle. Reward offered for its return.",
+        "author_id": "10",
+        "image": {
+            "destination": "public/uploads/",
+            "filename": "backpack.jpg"
+        },
+        "category": "Accessories",
+        "date": "2023-04-11",
+        "location": "Gateway South",
+        "lostOrFound": "lost"
+    },
+    {
+        "title": "Found: Watch near the coffee shop",
+        "content": "Found a watch near the coffee shop. Identify the brand and color to claim.",
+        "author_id": "11",
+        "image": {
+            "destination": "public/uploads/",
+            "filename": "watch2.jpg"
+        },
+        "category": "Accessories",
+        "date": "2023-04-12",
+        "location": "Gateway North",
+        "lostOrFound": "found"
+    },
+    {
+        "title": "Lost: Watch in Samuel C. Williams Library",
+        "content": "I lost my smartwatch in the Stevens Institute of Technology library. It was last seen on one of the study tables upstairs, where it’s quieter. I was really upset because I used it all the time to keep track of my classes and deadlines. After realizing it was missing, I sent out an email to everyone, hoping someone might have picked it up and could return it. I even tried the watch’s tracking feature, but it only showed the last place it was before going offline. I guess it’s a lesson learned to keep a closer watch on my stuff, especially in busy places like the library!",
+        "author_id": "12",
+        "image": {
+            "destination": "public/uploads/",
+            "filename": "watch3.jpg"
+        },
+        "category": "Accessories",
+        "date": "2023-04-12",
+        "location": "Other",
+        "lostOrFound": "lost"
     }
 ]

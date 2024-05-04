@@ -50,7 +50,21 @@ Seeded Admin account (Required to see dashboard functionality!) credentials are:
 
 - [x] comment limit function (one account can post only one comment in the post)
 
-- [ ] trending and latest posts page
+- [x] trending and latest posts page
+
+- [x] upload image function
+
+- [x] type check in client side validation, routes, data file folders
+
+- [x] data folder other functions change
+
+- [x] database seed file change
+
+- [x] handlebars changes
+
+- [x] not show dashboard和profile immediately after registration without login
+
+- [ ] claim function
 
 - [ ] search bar for date, location and categories
 
@@ -60,10 +74,6 @@ Seeded Admin account (Required to see dashboard functionality!) credentials are:
 
 - [ ] friend communication function
 
-- [ ] claim function
-
-- [ ] upload image function
-
 - [ ] map API 
 
 - [ ] Landing page design (purpose, motivation and contact)
@@ -72,21 +82,7 @@ Seeded Admin account (Required to see dashboard functionality!) credentials are:
 
 - [ ] Postman check every URL and relative written request methods
 
-- [ ] AJAX
-
 - [ ] XSS
 
 - [ ] tota11y
-
-- [ ] 注册完没有登陆，显示了dashboard和profile
-
-- [ ] refactor service using ajax and API instead of add routes
-
-- [ ] type check in client side validation, routes, data file folders
-
-- [ ] data folder other functions change
-
-- [ ] database seed file change
-
-- [ ] handlebars changes
 

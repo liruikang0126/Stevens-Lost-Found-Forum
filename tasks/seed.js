@@ -7,8 +7,8 @@ import postData from "./post-seeds.json" with { type: "json" };
 import commentData from "./comment-seeds.json" with { type: "json" };
 
 const db = await dbConnection();
-// await seed();
-await debugPosts();
+ await seed();
+//await debugPosts();
 // await debugUsers();
 // await debugComments();
 await closeConnection();
@@ -42,7 +42,7 @@ async function seedPosts(){
         try{
             const p=postData[i]
             p.author_id=us[i%lus]._id;
-            const res =await posts.create(p.title,p.content,p.author_id)
+            const res =await posts.create(p.title,p.content,p.image,p.category,p.date,p.location,p.lostOrFound,p.author_id)
         }catch(e){
             console.log(e);
         }

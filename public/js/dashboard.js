@@ -20,6 +20,12 @@ const submitPostHandler = async (event) => {
       // client-side validation
       title = helper.checkString(title, 100, "title");
       content = helper.checkString(content, 2000, "content");
+      category = helper.checkCategory(category);
+      location = helper.checkLocation(location);
+      date = helper.checkDate(date);
+      lostOrFound = helper.checkLOF(lostOrFound);
+      image = helper.checkImage(image);
+
       const formData = new FormData();
       formData.append("title", title);
       formData.append("lostOrFound", lostOrFound);
@@ -29,6 +35,7 @@ const submitPostHandler = async (event) => {
       formData.append("content", content);
       formData.append("image", image);
       formData.append("author_id", author_id);
+
       const response = await fetch("/api/post/", {
         method: "POST",
         body: formData,
@@ -114,5 +121,37 @@ const helper = {
     if (strVal.length > maxlen)
       throw `Error: ${varName}'s length cannot exceed ${maxlen}`;
     return strVal;
+  },
+  checkCategory(category) {
+    const categoryList = ["Electronics", "Accessories", "Clothing", "Other"];
+    if (!categoryList.includes(category)) {
+      throw "category error";
+    }
+    return category;
+  },
+  checkLocation(location) {
+    const locationList = ["Gateway South", "Gateway North", "Other"];
+    if (!locationList.includes(location)) {
+      throw "location error";
+    }
+    return location;
+  },
+  checkDate(date) {
+    const d1 = new Date(date);
+    const d2 = new Date();
+    if (d1 > d2 || isNaN(d1)) throw "date error";
+    return d1;
+  },
+  checkLOF(lostOrFound) {
+    if (!lostOrFound == "lost" && !lostOrFound == "found") {
+      throw "lostOrFound error";
+    }
+    return lostOrFound;
+  },
+  checkImage(image) {
+    if (!image) {
+      throw "image is null";
+    }
+    return image;
   },
 };

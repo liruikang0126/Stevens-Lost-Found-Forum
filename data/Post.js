@@ -7,6 +7,10 @@ import { dirname } from "path";
 import { fileURLToPath } from "url";
 import path from "path";
 
+const __filename = fileURLToPath(import.meta.url);
+let __dirname = dirname(__filename);
+__dirname = __dirname.substring(0, __dirname.lastIndexOf("\\"));
+
 const exportedMethods = {
   async create(
     title,
@@ -20,6 +24,12 @@ const exportedMethods = {
   ) {
     title = helper.checkString(title, 100, "title");
     content = helper.checkString(content, 2000, "content");
+    category = helper.checkCategory(category);
+    location = helper.checkLocation(location);
+    date = helper.checkDate(date);
+    lostOrFound = helper.checkLOF(lostOrFound);
+    image = helper.checkImage(image);
+
     author_id = helper.checkId(author_id, "author_id");
     const user = await User.getByAuthorId(author_id);
     const author = user.username;
@@ -84,17 +94,34 @@ const exportedMethods = {
     const postCollection = await posts();
     let postList = await postCollection
       .find({ author_id: new ObjectId(id) })
+      .sort({ createdAt: -1 })
       .toArray();
     postList = postList.map((e) => {
       return helper.stringifyPost(e);
     });
     return postList;
   },
-  async update(postId, title, content, author_id) {
+  async update(
+    postId,
+    title,
+    content,
+    image,
+    category,
+    date,
+    location,
+    lostOrFound,
+    author_id
+  ) {
     postId = helper.checkId(postId, "postId");
     title = helper.checkString(title, 100, "title");
     content = helper.checkString(content, 2000, "content");
     author_id = helper.checkId(author_id, "author_id");
+    category = helper.checkCategory(category);
+    location = helper.checkLocation(location);
+    date = helper.checkDate(date);
+    lostOrFound = helper.checkLOF(lostOrFound);
+    image = helper.checkImage(image);
+
     const postCollection = await posts();
     const postToUpdate = await this.getByPostId(postId);
     if (!postToUpdate) throw "Post not found";
@@ -105,14 +132,22 @@ const exportedMethods = {
     let newPost = {
       _id: postToUpdate._id,
       title,
-      content,
       author_id,
       author: postToUpdate.author,
+      content,
+      image,
+      category,
+      date,
+      location,
+      lostOrFound,
+      isCompleted: postToUpdate.isCompleted,
+      completer_id: postToUpdate.completer_id,
       createdAt: postToUpdate.createdAt,
       updatedAt,
       comments: postToUpdate.comments,
     };
     newPost = helper.unstringifyPost(newPost);
+    // update
     let updateInfo = await postCollection.findOneAndReplace(
       { _id: new ObjectId(postId) },
       newPost,
@@ -121,14 +156,27 @@ const exportedMethods = {
     if (!updateInfo)
       throw `Error: Update failed! Could not update post with id ${postId}`;
     updateInfo = helper.stringifyPost(updateInfo);
+
+    // delete the previous image
+    const deletePath = path.join(
+      __dirname,
+      `${postToUpdate.image.destination}${postToUpdate.image.filename}`
+    );
+    fs.unlink(deletePath, (err) => {
+      if (err) {
+        if (err.code === "ENOENT") {
+          throw "Image does not exist.";
+        } else {
+          throw err;
+        }
+      }
+    });
+
     return updateInfo;
   },
   async destroy(postId) {
     postId = helper.checkId(postId, "postId");
 
-    const __filename = fileURLToPath(import.meta.url);
-    let __dirname = dirname(__filename);
-    __dirname = __dirname.substring(0, __dirname.lastIndexOf("\\"));
     const post = await this.getByPostId(postId);
     const deletePath = path.join(
       __dirname,

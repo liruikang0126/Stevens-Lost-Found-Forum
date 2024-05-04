@@ -11,11 +11,7 @@ router.post("/", async (req, res) => {
       req.body.password,
       req.body.is_admin
     );
-    req.session.save(() => {
-      req.session.loggedIn = true;
-      req.session.loggedInUserData = dbUserData;
-      return res.status(200).json(dbUserData);
-    });
+    return res.status(200).json(dbUserData);
   } catch (err) {
     console.log(err);
     return res.status(500).json(err);

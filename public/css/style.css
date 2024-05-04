@@ -1,6 +1,7 @@
 nav.navbar {
     height: 6rem !important;
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06) !important;
+
 }
 
 .navbar-item img {
@@ -76,8 +77,6 @@ nav.navbar {
 }
 
 .item-image{
-    max-width: 100%;
-	max-height: 100%;
     object-fit: contain;
 }
 .box{
@@ -89,3 +88,21 @@ nav.navbar {
     right: 5px;
     top: 1px;
 }
+
+.about {
+	margin: 25px 0 20px;
+	text-align: center;
+}
+
+.line-about {
+	width: 150px;
+    margin: auto;
+}
+
+
+.tag{
+    position:relative;
+    left:20px;
+    bottom: 2px;
+}
+

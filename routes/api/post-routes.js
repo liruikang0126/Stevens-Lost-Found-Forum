@@ -7,7 +7,7 @@ import * as path from "path";
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "uploads/");
+    cb(null, "public/uploads/");
   },
   filename: function (req, file, cb) {
     cb(null, Date.now() + path.extname(file.originalname));
@@ -42,7 +42,7 @@ router.post("/", withAuth, upload.single("image"), async (req, res) => {
 });
 
 //update post
-router.put("/:id", withAuth, async (req, res) => {
+router.put("/:id", withAuth, upload.single("image"), async (req, res) => {
   try {
     var post = await Post.getByPostId(req.params.id);
   } catch (e) {
@@ -52,6 +52,7 @@ router.put("/:id", withAuth, async (req, res) => {
     post.author_id === req.body.author_id &&
     (req.session.loggedInUserData._id === post.author_id ||
       req.session.loggedInUserData.isAdmin);
+
   try {
     if (!condition) throw "You don't have the permission to edit the post";
   } catch (err) {
@@ -62,6 +63,11 @@ router.put("/:id", withAuth, async (req, res) => {
       req.params.id,
       req.body.title,
       req.body.content,
+      req.file,
+      req.body.category,
+      req.body.date,
+      req.body.location,
+      req.body.lostOrFound,
       req.body.author_id
     );
     return res.status(200).json(updateResult);
@@ -95,4 +101,5 @@ router.delete("/:id", withAuth, async (req, res) => {
     return res.status(500).json(err);
   }
 });
+
 export default router;

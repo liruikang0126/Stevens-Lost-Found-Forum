@@ -27,7 +27,18 @@ const signupFormHandler = async (event) => {
       headers: { "Content-Type": "application/json" },
     });
     if (response.ok) {
-      document.location.replace("/");
+      Swal.fire({
+        title: "Registered",
+        text: "You have signed up successfully!",
+        icon: "success",
+        confirmButtonText: "OK",
+      });
+      var delayInMilliseconds = 1000;
+
+      setTimeout(function () {
+        //your code to be executed after seconds
+        document.location.replace("/login");
+      }, delayInMilliseconds);
     } else {
       alert(
         "Failed to sign up. " + response.status + ": " + (await response.json())
