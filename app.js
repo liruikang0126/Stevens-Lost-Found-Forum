@@ -49,3 +49,52 @@ app.listen(PORT, () => {
   console.log("We've now got a server!");
   console.log("Your routes will be running on http://localhost:3001");
 });
+
+
+
+
+import bodyParser from 'body-parser';
+import fileUpload from 'express-fileupload';
+
+// 导入自定义路由模块
+import userRoutes from './routes/user-routes.js';
+
+
+
+// 设置 Handlebars 作为视图引擎
+app.expressHandlebars('handlebars', expressHandlebars());
+app.set('view expressHandlebars', 'handlebars');
+app.set('views', path.join(__dirname, 'views'));
+
+// 配置静态文件目录
+app.use(express.static(path.join(__dirname, 'public')));
+
+// 配置解析中间件
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+// 配置文件上传中间件
+app.use(fileUpload());
+
+// 配置会话管理
+app.use(session({
+  secret: 'your_secret_key',
+  resave: false,
+  saveUninitialized: false,
+  cookie: { maxAge: 3600000 }  // 设置 cookie 过期时间为 1 小时
+}));
+
+// 挂载用户路由
+app.use('/users', userRoutes);
+
+// 基本错误处理
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
+
+// 处理 404
+app.use((req, res, next) => {
+  res.status(404).render('404');  // 假设有一个 404.handlebars 模板
+});
+

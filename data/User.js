@@ -99,18 +99,6 @@ const exportedMethods = {
     };
   },
 
-  // async updateUserProfile(userId, updateData) {
-  //   userId = helper.checkId(userId, "user_id");  // 确保用户ID有效
-  //   const userCollection = await users();
-  //   const updateResult = await userCollection.updateOne(
-  //     { _id: new ObjectId(userId) },
-  //     { $set: updateData }
-  //   );
-  //   if (updateResult.modifiedCount === 0) {
-  //     throw new Error("No changes were made to the profile.");
-  //   }
-  //   return updateResult;
-  // }
 
   async updateUserProfile(userId, updateData) {
     const userCollection = await users();

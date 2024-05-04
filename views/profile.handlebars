@@ -1,29 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
     <title>{{username}}'s Profile</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
-    <h1>{{username}}'s Profile</h1>
-    <img src="{{image}}" alt="{{username}}'s profile image" onerror="this.src='path/to/default-image.jpg';">
-    <p>Email: {{email}}</p>
-    <p>Phone: {{phoneNumber}}</p>
+    <header>
+        <h1>{{username}}'s Profile</h1>
+    </header>
+    <main>
+        <div>
+            <img src="{{image}}" alt="{{username}}'s Profile Image" onerror="this.src='/images/default-profile.jpg';">
+            <p>Email: {{email}}</p>
+            <p>Phone: {{phoneNumber}}</p>
+        </div>
 
-    <h2>Friends</h2>
-    <ul>
-        {{#each friends}}
-        <li>{{this.name}}</li>
-        {{/each}}
-    </ul>
-
-    <form action="/users/{{_id}}/profile" method="POST" enctype="multipart/form-data">
-        <input type="text" name="username" value="{{username}}" required>
-        <input type="email" name="email" value="{{email}}" required>
-        <input type="file" name="image">
-        <button type="submit">Update</button>
-    </form>
+        {{#if canEdit}}
+        <h2>Edit Your Profile</h2>
+        <form action="/users/{{_id}}/profile" method="post" enctype="multipart/form-data">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" value="{{username}}" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" value="{{email}}" required>
+            <label for="phone">Phone Number:</label>
+            <input type="text" id="phone" name="phoneNumber" value="{{phoneNumber}}" required>
+            <label for="image">Profile Image:</label>
+            <input type="file" id="image" name="image">
+            <button type="submit">Update Profile</button>
+        </form>
+        {{else}}
+        <p>Visit your settings to update your profile.</p>
+        {{/if}}
+    </main>
+    <footer>
+        <p>Thank you for visiting your profile.</p>
+    </footer>
 </body>
 
 </html>
