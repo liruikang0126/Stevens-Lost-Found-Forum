@@ -129,6 +129,20 @@ const exportedMethods = {
     });
     return post;
   },
+  filterArray(posts) {
+    const packagedPosts = [];
+    let currentPackage = [];
+    for (let i = 0; i < posts.length; i++) {
+      currentPackage.push(posts[i]);
+      if ((i + 1) % 3 == 0 || posts.length - i <= 1) {
+        if (currentPackage.length != 0) {
+          packagedPosts.push(currentPackage);
+        }
+        currentPackage = [];
+      }
+    }
+    return packagedPosts;
+  },
   arrayDealer(posts) {
     // due to the HTML/CSS template for the blog, package the posts into a custom data structure
     // before sending to be rendered
@@ -185,6 +199,9 @@ const exportedMethods = {
       throw "image is null";
     }
     return image;
+  },
+  isEmptyArray(array) {
+    return array.length == 0;
   },
 };
 export default exportedMethods;

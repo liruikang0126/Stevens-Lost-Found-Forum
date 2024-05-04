@@ -81,6 +81,30 @@ const exportedMethods = {
     });
     return postList;
   },
+  async getByFilter(lostOrFound, category, date1, date2, location) {
+    const postCollection = await posts();
+    let postList = await postCollection.find({}).toArray();
+    postList.sort(function (a, b) {
+      return b.comments.length - a.comments.length;
+    });
+    const d1 = new Date(date1);
+    const d2 = new Date(date2);
+    postList = postList.filter((e) => {
+      const date = new Date(e.date);
+      const condition =
+        e.lostOrFound == lostOrFound &&
+        e.category == category &&
+        date >= d1 &&
+        date <= d2 &&
+        e.location == location;
+      return condition;
+    });
+    if (!postList) throw "Could not get all posts";
+    postList = postList.map((e) => {
+      return helper.stringifyPost(e);
+    });
+    return postList;
+  },
   async getByPostId(postId) {
     postId = helper.checkId(postId, "postId");
     const postCollection = await posts();

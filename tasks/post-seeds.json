@@ -8,7 +8,7 @@
             "filename": "watch.jpg"
         },
         "category": "Electronics",
-        "date": "2023-04-01",
+        "date": "2024-04-01",
         "location": "Gateway South",
         "lostOrFound": "lost"
     },
@@ -21,7 +21,7 @@
             "filename": "keys.jpg"
         },
         "category": "Accessories",
-        "date": "2023-04-02",
+        "date": "2024-04-02",
         "location": "Gateway North",
         "lostOrFound": "found"
     },
@@ -34,7 +34,7 @@
             "filename": "jacket.jpg"
         },
         "category": "Clothing",
-        "date": "2023-04-03",
+        "date": "2024-04-03",
         "location": "Gateway South",
         "lostOrFound": "lost"
     },
@@ -47,7 +47,7 @@
             "filename": "bracelet.jpg"
         },
         "category": "Accessories",
-        "date": "2023-04-04",
+        "date": "2024-04-04",
         "location": "Other",
         "lostOrFound": "found"
     },
@@ -60,7 +60,7 @@
             "filename": "laptop_bag.jpg"
         },
         "category": "Electronics",
-        "date": "2023-04-05",
+        "date": "2024-04-05",
         "location": "Other",
         "lostOrFound": "lost"
     },
@@ -73,7 +73,7 @@
             "filename": "sunglasses.jpg"
         },
         "category": "Accessories",
-        "date": "2023-04-06",
+        "date": "2024-04-06",
         "location": "Other",
         "lostOrFound": "found"
     },
@@ -86,7 +86,7 @@
             "filename": "phone.jpg"
         },
         "category": "Electronics",
-        "date": "2023-04-07",
+        "date": "2024-04-07",
         "location": "Other",
         "lostOrFound": "lost"
     },
@@ -99,7 +99,7 @@
             "filename": "wallet.jpg"
         },
         "category": "Accessories",
-        "date": "2023-04-08",
+        "date": "2024-04-08",
         "location": "Other",
         "lostOrFound": "found"
     },
@@ -112,7 +112,7 @@
             "filename": "umbrella.jpg"
         },
         "category": "Accessories",
-        "date": "2023-04-09",
+        "date": "2024-04-09",
         "location": "Gateway South",
         "lostOrFound": "lost"
     },
@@ -125,7 +125,7 @@
             "filename": "necklace.jpg"
         },
         "category": "Accessories",
-        "date": "2023-04-10",
+        "date": "2024-04-10",
         "location": "Gateway North",
         "lostOrFound": "found"
     },
@@ -138,7 +138,7 @@
             "filename": "backpack.jpg"
         },
         "category": "Accessories",
-        "date": "2023-04-11",
+        "date": "2024-04-11",
         "location": "Gateway South",
         "lostOrFound": "lost"
     },
@@ -151,7 +151,7 @@
             "filename": "watch2.jpg"
         },
         "category": "Accessories",
-        "date": "2023-04-12",
+        "date": "2024-04-12",
         "location": "Gateway North",
         "lostOrFound": "found"
     },
@@ -164,7 +164,7 @@
             "filename": "watch3.jpg"
         },
         "category": "Accessories",
-        "date": "2023-04-12",
+        "date": "2024-04-12",
         "location": "Other",
         "lostOrFound": "lost"
     }

@@ -66,7 +66,7 @@ Seeded Admin account (Required to see dashboard functionality!) credentials are:
 
 - [x] claim function
 
-- [ ] search bar for date, location and categories
+- [x] search bar for date, location and categories
 
 - [ ] profile function
 
