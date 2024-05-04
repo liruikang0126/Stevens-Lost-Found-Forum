@@ -174,6 +174,27 @@ const exportedMethods = {
 
     return updateInfo;
   },
+  async complete(postId, completer_id) {
+    postId = helper.checkId(postId, "postId");
+    completer_id = helper.checkId(completer_id, "completer_id");
+    const postCollection = await posts();
+    const postToUpdate = await this.getByPostId(postId);
+    if (!postToUpdate) throw "Post not found";
+    // update
+    let updateInfo = await postCollection.updateOne(
+      { _id: new ObjectId(postId) },
+      {
+        $set: {
+          isCompleted: true,
+          completer_id: completer_id,
+        },
+      },
+      { upsert: false }
+    );
+    if (!updateInfo.modifiedCount)
+      throw `Error: Complete failed! Could not complete post with id ${postId}`;
+    return { complete: true };
+  },
   async destroy(postId) {
     postId = helper.checkId(postId, "postId");
 

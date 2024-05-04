@@ -20,9 +20,9 @@
                             <h6>by {{postData.author}}<span
                                     class="tag is-link is-medium">{{postData.lostOrFound}}</span>
                                 {{#if postData.isCompleted}}
-                                <span class="tag is-primary is-medium">Completed!</span>
+                                <span class="tag is-primary is-medium tagCompleted">Completed</span>
                                 {{else}}
-                                <span class="tag is-warning is-medium">Uncompleted</span>
+                                <span class="tag is-warning is-medium tagCompleted">Uncompleted</span>
                                 {{/if}}
                             </h6>
                             <p> <strong>Occurrence date</strong>: {{format_time postData.date}}</p>
@@ -30,11 +30,15 @@
                             <p> <strong>Location</strong>: {{postData.location}}</p>
                             <p>{{postData.content}}</p>
                         </div>
+                        {{#if postData.isCompleted}}
+                        <p> <strong>Completer</strong>: {{completer}}</p>
+                        {{else}}
                         {{#if (isLost postData.lostOrFound)}}
-                        <button class="button is-large  is-primary is-rounded">I Found
+                        <button class="button is-large  is-primary is-rounded complete">I Found
                             it!</button>
                         {{else}}
-                        <button class="button is-large  is-primary is-rounded">Claim</button>
+                        <button class="button is-large  is-primary is-rounded complete">Claim</button>
+                        {{/if}}
                         {{/if}}
                     </div>
                 </div>

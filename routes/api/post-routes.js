@@ -77,6 +77,26 @@ router.put("/:id", withAuth, upload.single("image"), async (req, res) => {
   }
 });
 
+//complete post
+router.patch("/:id", withAuth, async (req, res) => {
+  const condition = req.session.loggedInUserData._id === req.body.completer_id;
+  try {
+    if (!condition) throw "Login info is different from provided author_id";
+  } catch (err) {
+    return res.status(400).json(err);
+  }
+  try {
+    const updateResult = await Post.complete(
+      req.params.id,
+      req.body.completer_id
+    );
+    return res.status(200).json(updateResult);
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json(err);
+  }
+});
+
 //delete post
 router.delete("/:id", withAuth, async (req, res) => {
   try {

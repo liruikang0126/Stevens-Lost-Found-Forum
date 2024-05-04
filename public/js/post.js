@@ -61,6 +61,42 @@ const deleteCommentHandler = async (event) => {
   //then add logic to hide this for (non) admins and current user
 };
 
+const completePostHandler = async (event) => {
+  event.preventDefault();
+  const author_id = document.querySelector(".logged-in-user-id").innerHTML; //need id of logged in user
+  const post_id = document.querySelector(".current-post-id").innerHTML;
+  if (!author_id) {
+    document.location.replace("/login");
+  } else {
+    const response = await fetch("/api/post/" + post_id, {
+      method: "PATCH",
+      body: JSON.stringify({ completer_id: author_id }),
+      headers: { "Content-Type": "application/json" },
+    });
+    if (response.ok) {
+      Swal.fire({
+        title: "Completed",
+        text: "Thank you for joining us on this endeavor towards practicality and community assistance.",
+        icon: "success",
+      });
+      var delayInMilliseconds = 1000;
+
+      setTimeout(function () {
+        //your code to be executed after seconds
+        document.location.replace("/post/" + post_id);
+        document.location.reload();
+      }, delayInMilliseconds);
+    } else {
+      alert(
+        "Failed to complete the post. " +
+          response.status +
+          ": " +
+          (await response.json())
+      );
+    }
+  }
+};
+
 //add event listeners
 document
   .querySelector(".comment-submit")
@@ -70,6 +106,10 @@ const deleteLinks = document.querySelectorAll(".delete-comment");
 deleteLinks.forEach((el) =>
   el.addEventListener("click", (event) => deleteCommentHandler(event))
 );
+
+document
+  .querySelector(".complete")
+  .addEventListener("click", completePostHandler);
 
 const helper = {
   checkString(strVal, maxlen, varName) {
