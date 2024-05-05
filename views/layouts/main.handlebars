@@ -8,6 +8,7 @@
   <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
   <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.0/css/bulma.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link rel="stylesheet" href="../css/bulma-divider.css" />
   <link rel="stylesheet" href="../css/style.css" />
 </head>
@@ -36,23 +37,62 @@
       {{! end of .navbar-brand}}
 
       <div id="navbarMenu" class="navbar-menu">
-        <div class="navbar-end">
-          <a class="navbar-item is-active is-size-5 has-text-weight-semibold" href="/"><i class="fas fa-home"></i>
+
+        <div class="navbar-start">
+          <a class="navbar-item  is-size-5 has-text-weight-semibold" href="/">
             Home
           </a>
 
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link is-size-5 has-text-weight-semibold">
+              More
+            </a>
+
+            <div class="navbar-dropdown">
+              <a href="/service" class="navbar-item">
+                Service
+              </a>
+              <a href="/filter" class="navbar-item">
+                Search filters
+              </a>
+              <hr class="navbar-divider">
+              <a class="navbar-item" href="/about">
+                About
+              </a>
+            </div>
+          </div>
+        </div>
+        {{!-- <div class="navbar-item field has-addons searchbar">
+          <div class="control">
+            <input class="input" type="text" placeholder="Search">
+          </div>
+          <div class="control">
+            <button class="button is-black">
+              Search
+            </button>
+          </div>
+        </div> --}}
+
+        <div class="navbar-end">
+
           {{#if loggedIn}}
-          <a class="navbar-item is-size-5 has-text-weight-semibold" href="/dashboard"><i class="fa fa-dashboard"></i>
+          <a class="navbar-item is-size-5 has-text-weight-semibold" href="/dashboard"><i
+              class="fa fa-dashboard icon"></i>
             Dashboard
           </a>
-          <a class="navbar-item is-size-5 has-text-weight-semibold" href="/logout/"><i class="fas fa-sign-out-alt"></i>
+          <a class="navbar-item  is-size-5 has-text-weight-semibold" href="/profile"><i class="fas fa-user icon "></i>
+            {{loggedInUserData.username}}
+          </a>
+          <a class="navbar-item is-size-5 has-text-weight-semibold" href="/logout/"><i
+              class="fas fa-sign-out-alt icon "></i>
             Logout
           </a>
           {{else}}
-          <a class="navbar-item is-size-5 has-text-weight-semibold" href="/login/"><i class="fas fa-user-tie"></i>
+          <a class="navbar-item is-size-5 has-text-weight-semibold" href="/login/"><i class="fas fa-user-tie icon"></i>
             Login
           </a>
-          <a class="navbar-item is-size-5 has-text-weight-semibold" href="/signup/"><i class="fas fa-sign-out-alt"></i>
+          <a class="navbar-item is-size-5 has-text-weight-semibold" href="/signup/"><i
+              class="fas fa-sign-out-alt icon"></i>
             Signup
           </a>
           {{/if}}
@@ -73,6 +113,10 @@
     </div>
     <div class="logged-in-user-id is-invisible">{{loggedInUserData._id}}</div>
   </footer>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
+    crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="/js/main.js"></script>
 </body>
 

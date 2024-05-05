@@ -26,6 +26,8 @@ const exportedMethods = {
       email,
       password: hash,
       isAdmin,
+      phone: undefined,
+      friends: [],
     };
     const insertInfo = await userCollection.insertOne(newUser);
     if (!insertInfo.acknowledged || !insertInfo.insertedId)

@@ -12,13 +12,13 @@
         "lint": "eslint ./"
     },
     "repository": {
-      "type": "git",
-      "url": "git+ssh://git@github.com/liruikang0126/Stevens-Lost-Found-Forum.git"
+        "type": "git",
+        "url": "git+ssh://git@github.com/liruikang0126/Stevens-Lost-Found-Forum.git"
     },
     "author": "CS546 Group 33",
     "license": "ISC",
     "bugs": {
-      "url": "https://github.com/liruikang0126/Stevens-Lost-Found-Forum/issues"
+        "url": "https://github.com/liruikang0126/Stevens-Lost-Found-Forum/issues"
     },
     "homepage": "https://github.com/liruikang0126/Stevens-Lost-Found-Forum#readme",
     "dependencies": {
@@ -26,11 +26,13 @@
         "express": "^4.17.1",
         "express-handlebars": "^5.3.3",
         "express-session": "^1.17.2",
-        "mongodb": "^6.5.0"
+        "mongodb": "^6.5.0",
+        "multer": "^1.4.5-lts.1",
+        "sweetalert2": "^11.6.13"
     },
     "devDependencies": {
         "eslint": "^7.32.0",
         "eslint-config-google": "^0.14.0",
         "nodemon": "^2.0.12"
     }
-  }
+}

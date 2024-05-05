@@ -1,22 +1,50 @@
 <section class="section">
     <div class="columns is-variable is-8">
         <div class="column is-5 is-offset-1">
-            <div class="content is-medium">
-                <h2 class="subtitle is-5 has-text-grey">{{format_time
-                    0.createdAt
-                    }}</h2>
-                <h1 class="title has-text-black is-3"><a href="/post/{{0._id}}">{{0.title}}</a></h1>
-                <p class="has-text-dark">{{format_summary 0.content}}</p>
+            <div class="card">
+                <div class="card-image">
+                    <figure class="image is-4by3">
+                        <img src="../uploads/{{0.image.filename}}" class="item-image" alt="placeholder image" />
+                    </figure>
+                </div>
+                <div class="card-content">
+                    <div class="media">
+                        <div class="media-content">
+                            <h2 class="subtitle is-5 has-text-grey">{{format_time
+                                0.createdAt
+                                }}</h2>
+                            <h1 class="title has-text-black is-3"><a href="/post/{{0._id}}">{{0.title}}</a></h1>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <p class="has-text-dark">{{format_summary 0.content}}</p>
+                        <br />
+                    </div>
+                </div>
             </div>
         </div>
         {{#if 1.title}}
         <div class="column is-5">
-            <div class="content is-medium">
-                <h2 class="subtitle is-5 has-text-grey">{{format_time
-                    1.createdAt
-                    }}</h2>
-                <h1 class="title has-text-black is-3"><a href="/post/{{1._id}}">{{1.title}}</a></h1>
-                <p class="has-text-dark">{{format_summary 1.content}}</p>
+            <div class="card">
+                <div class="card-image">
+                    <figure class="image is-4by3">
+                        <img src="../uploads/{{1.image.filename}}" class="item-image" alt="placeholder image" />
+                    </figure>
+                </div>
+                <div class="card-content">
+                    <div class="media">
+                        <div class="media-content">
+                            <h2 class="subtitle is-5 has-text-grey">{{format_time
+                                1.createdAt
+                                }}</h2>
+                            <h1 class="title has-text-black is-3"><a href="/post/{{1._id}}">{{1.title}}</a></h1>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <p class="has-text-dark">{{format_summary 1.content}}</p>
+                        <br />
+                    </div>
+                </div>
             </div>
         </div>
         {{/if}}

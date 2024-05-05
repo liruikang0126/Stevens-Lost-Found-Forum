@@ -6,7 +6,7 @@ const signupFormHandler = async (event) => {
   let email = document.querySelector(".email-input").value.trim();
   let password = document.querySelector(".password-input").value.trim();
   let confirmPassword = document.getElementById("confirmPassword").value;
-  let role = document.getElementsByName("role").value;
+  let role = $(":radio[name=role]:checked").val();
   let is_admin = role == "admin";
 
   try {
@@ -27,10 +27,21 @@ const signupFormHandler = async (event) => {
       headers: { "Content-Type": "application/json" },
     });
     if (response.ok) {
-      document.location.replace("/");
+      Swal.fire({
+        title: "Registered",
+        text: "You have signed up successfully!",
+        icon: "success",
+        confirmButtonText: "OK",
+      });
+      var delayInMilliseconds = 1000;
+
+      setTimeout(function () {
+        //your code to be executed after seconds
+        document.location.replace("/login");
+      }, delayInMilliseconds);
     } else {
       alert(
-        "Failed to sign up. " + response.status + ": " + response.statusText
+        "Failed to sign up. " + response.status + ": " + (await response.json())
       );
     }
   } catch (e) {

@@ -6,13 +6,14 @@ import userData from "./user-seeds.json" with { type: "json" };
 import postData from "./post-seeds.json" with { type: "json" };
 import commentData from "./comment-seeds.json" with { type: "json" };
 
-await seed();
-// await debugPosts();
+const db = await dbConnection();
+ await seed();
+//await debugPosts();
 // await debugUsers();
 // await debugComments();
+await closeConnection();
 
 async function seed(){
-    const db = await dbConnection();
     await db.dropDatabase();
     try{
         await seedUsers();
@@ -22,7 +23,6 @@ async function seed(){
         console.log(e);
     }
     console.log("Done seeding database");
-    await closeConnection();
 }
 async function seedUsers(){
     for(let i in userData){
@@ -42,7 +42,7 @@ async function seedPosts(){
         try{
             const p=postData[i]
             p.author_id=us[i%lus]._id;
-            const res =await posts.create(p.title,p.content,p.author_id)
+            const res =await posts.create(p.title,p.content,p.image,p.category,p.date,p.location,p.lostOrFound,p.author_id)
         }catch(e){
             console.log(e);
         }
@@ -51,7 +51,7 @@ async function seedPosts(){
 async function seedComments(){
     const us=await users.getAll();
     const lus=us.length;
-    const ps=await posts.getAll();
+    const ps=await posts.getAllLatest();
     let lps=ps.length;
     for(let i in commentData){
         try{
@@ -65,7 +65,6 @@ async function seedComments(){
     } 
 }
 async function debugUsers(){
-    const db = await dbConnection();
     const us=await users.getAll();
     try{
         const res=await users.getByEmail(us[0].email);
@@ -79,13 +78,12 @@ async function debugUsers(){
     }catch(e){
         console.log(e);
     }
-    await closeConnection();
 }
 async function debugPosts(){
-    const ps=await posts.getAll();
+    const ps=await posts.getAllLatest();
     const us=await users.getAll();
     try{
-        const res =await posts.getAll();
+        const res =await posts.getAllHottest();
         // console.log(res);
     }catch(e){
         console.log(e);
@@ -111,12 +109,11 @@ async function debugPosts(){
     }
     
     try{
-        const res =await posts.destroy(ps[0]._id)
+        // const res =await posts.destroy(ps[0]._id)
         // console.log(res);
     }catch(e){
         console.log(e);
     } 
-    await closeConnection();
 }
 async function debugComments(){
     const allComments=await comments.getAll();
@@ -131,8 +128,13 @@ async function debugComments(){
         // console.log(res);
     }catch(e){
         console.log(e);
-    } 
-    await closeConnection();
+    }
+    try{
+        const res=await comments.update(allComments[1]._id,"Updated comments");
+        console.log(res);
+    }catch(e){
+        console.log(e);
+    }  
 }
 
 

@@ -83,6 +83,54 @@ const exportedMethods = {
     updateInfo = helper.stringifyPost(updateInfo);
     return updateInfo;
   },
+  async update(commentId, newContent) {
+    commentId = helper.checkId(commentId, "commentId");
+    newContent = helper.checkString(newContent, 2000, "content");
+    const postCollection = await posts();
+    let postToUpdate = await postCollection.findOne({
+      "comments._id": new ObjectId(commentId),
+    });
+    if (!postToUpdate) {
+      throw `could not find a comment with the commentId of ${commentId}`;
+    }
+    let updatedAt = new Date();
+    const newComments = postToUpdate.comments;
+    newComments.map((e) => {
+      if (e._id == commentId) {
+        e.content = newContent;
+        e.updatedAt = updatedAt;
+        return e;
+      }
+    });
+    let newPost = {
+      _id: postToUpdate._id,
+      title: postToUpdate.title,
+      author_id: postToUpdate.author_id,
+      author: postToUpdate.author,
+      content: postToUpdate.content,
+      image: postToUpdate.image,
+      category: postToUpdate.category,
+      date: postToUpdate.date,
+      location: postToUpdate.location,
+      lostOrFound: postToUpdate.lostOrFound,
+      isCompleted: postToUpdate.isCompleted,
+      completer_id: postToUpdate.completer_id,
+      createdAt: postToUpdate.createdAt,
+      updatedAt: postToUpdate.updatedAt,
+      comments: newComments,
+    };
+    newPost = helper.unstringifyPost(newPost);
+    let updateInfo = await postCollection.findOneAndReplace(
+      { _id: new ObjectId(postToUpdate._id) },
+      newPost,
+      { returnDocument: "after" }
+    );
+    if (!updateInfo)
+      throw `Error: Update failed! Could not update comment with id ${commentId}`;
+    updateInfo = helper.stringifyPost(updateInfo);
+    let result = await this.getByCommentId(commentId);
+    return result;
+  },
 };
 
 export default exportedMethods;

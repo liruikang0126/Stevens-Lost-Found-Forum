@@ -1,0 +1,127 @@
+<section class="hero">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8 is-offset-2">
+                    <form class="box">
+                        <label class="label is-large" class="label">Search</label>
+                        {{!-- status --}}
+                        <div class="field is-horizontal">
+                            <div class="field-label">
+                                <label class="label">Status</label>
+                            </div>
+                            <div class="field-body">
+                                <div class="field is-narrow">
+                                    <div class="control">
+                                        <label class="radio">
+                                            <input class="form-check-input" type="radio" name="lostOrFound"
+                                                id="gridRadios2" value="lost" checked>
+                                            Lost
+                                        </label>
+                                        <label class="radio">
+                                            <input class="form-check-input" type="radio" name="lostOrFound"
+                                                id="gridRadios2" value="found">
+                                            Found
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{!-- category --}}
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">Category</label>
+                            </div>
+                            <div class="field-body">
+                                <div class="field is-narrow">
+                                    <div class="control">
+                                        <div class="select is-fullwidth">
+                                            <select id="category" name="category">
+                                                <option value="Electronics">Electronics</option>
+                                                <option value="Clothing">Clothing</option>
+                                                <option value="Accessories">Accessories</option>
+                                                <option value="Other">Other</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{!-- date --}}
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">Start date</label>
+                            </div>
+                            <div class="field-body">
+                                <div class="field is-narrow">
+                                    <div class="control">
+                                        <input name="date1" class="input" id="date1" type="date" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">End date</label>
+                            </div>
+                            <div class="field-body">
+                                <div class="field is-narrow">
+                                    <div class="control">
+                                        <input name="date2" class="input" id="date2" type="date" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{!-- location --}}
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">Location</label>
+                            </div>
+                            <div class="field-body">
+                                <div class="field is-narrow">
+                                    <div class="control">
+                                        <div class="select is-fullwidth">
+                                            <select name="location" id="location">
+                                                <option value="Gateway South">Gateway South</option>
+                                                <option value="Gateway North">Gateway North</option>
+                                                <option value="Other">Other</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field is-grouped is-grouped-right mt-3">
+                            <button class="button is-success submit-button">
+                                Confirm
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            {{#if query.lostOrFound}}
+            <h1 class="title ">Your query</h1>
+            <div class="query">
+                <p> <strong>Status</strong>: {{query.lostOrFound}}</p>
+                <p> <strong>Category</strong>: {{query.category}}</p>
+                <p> <strong>Occurrence date</strong>: From {{format_time query.date1}} to {{format_time query.date2}}
+                </p>
+                <p> <strong>Location</strong>: {{query.location}}</p><br />
+            </div>
+            {{/if}}
+            <h1 class="title ">Result</h1>
+            {{#if (isEmptyArray posts)}}
+            <p>Sorry, we cannot find any matching result.</p>
+            {{else}}
+            {{#each posts}}
+            {{> post-filter}}
+            {{/each}}
+            {{/if}}
+        </div>
+    </div>
+</section>
+<script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
+    crossorigin="anonymous"></script>
+<script src="/js/filter.js"></script>

@@ -9,7 +9,7 @@ router.get("/", withAuth, async (req, res) => {
     if (!req.session.loggedInUserData.isAdmin) {
       posts = await Post.getByAuthorId(req.session.loggedInUserData._id);
     } else {
-      posts = await Post.getAll();
+      posts = await Post.getAllLatest();
     }
     res.render("dashboard", {
       loggedIn: req.session.loggedIn,

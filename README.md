@@ -42,17 +42,33 @@ Seeded Admin account (Required to see dashboard functionality!) credentials are:
 
 - [x] check and schedule router and middleware 
 
-- [ ] comment edit function
+- [x] comment edit function
 
-  Any user can edit and delete her/his own comments
+  Any user can edit and delete her/his own comments.
 
-  An admin can edit her/his own comments and delete all comments 
+  An admin can edit her/his own comments and delete all comments. 
 
-- [ ] comment limit function (one account can post only one comment in the post)
+- [x] comment limit function (one account can post only one comment in the post)
 
-- [ ] trending and latest posts page
+- [x] trending and latest posts page
 
-- [ ] search bar for date, location and categories
+- [x] upload image function
+
+- [x] type check in client side validation, routes, data file folders
+
+- [x] data folder other functions change
+
+- [x] database seed file change
+
+- [x] handlebars changes
+
+- [x] not show dashboard和profile immediately after registration without login
+
+- [x] claim function
+
+- [x] search bar for date, location and categories
+
+- [x] Landing page design (purpose, motivation and contact)
 
 - [ ] profile function
 
@@ -60,19 +76,13 @@ Seeded Admin account (Required to see dashboard functionality!) credentials are:
 
 - [ ] friend communication function
 
-- [ ] claim function
-
-- [ ] upload image function
-
 - [ ] map API 
-
-- [ ] Landing page design (purpose, motivation and contact)
 
 - [ ] Monthly list page of the kindest people
 
-- [ ] Admin page
-
 - [ ] Postman check every URL and relative written request methods
 
-- [x] not showing dashboard if  the user don't have post
+- [ ] XSS
+
+- [ ] tota11y
 

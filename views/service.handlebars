@@ -1,0 +1,76 @@
+<!-- Image -->
+<section class="hero ">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8 is-offset-2">
+                    <h1 class="title">Item List Service</h1>
+                    <div class="tabs is-right">
+                        <ul>
+                            {{#if new}}
+                            <li class="" id="hottest"><a href="/service"><i class="fas fa-fire icon2"></i>Hottest</a>
+                            </li>
+                            <li id="latest" class="is-active"><a><i class="fas fa-clock icon2"></i>Latest</a>
+                            </li>
+                            {{else}}
+                            <li class="is-active" id="hottest"><a><i class="fas fa-fire icon2"></i>Hottest</a>
+                            </li>
+                            <li id="latest" class=""><a href="/service/new"><i class="fas fa-clock icon2"></i>Latest</a>
+                            </li>
+                            {{/if}}
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image is-16by9">
+                                <div id="toggle">
+                                    <img src="../uploads/{{posts.0.0.image.filename}}" class="item-image"
+                                        alt="placeholder image" />
+                            </figure>
+                        </div>
+
+                        <div class="card-content">
+                            <div class="media">
+                                <div class="media-content">
+
+                                    <h2 class="subtitle is-5 has-text-grey">{{format_time
+                                        posts.0.0.createdAt
+                                        }}</h2>
+                                    <h1 class="title has-text-black is-3"><a
+                                            href="/post/{{posts.0.0._id}}">{{posts.0.0.title}}</a></h1>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <p class="has-text-dark">{{format_summary posts.0.0.content}}</p>
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</div>
+</div>
+</section>
+<!-- Articles -->
+<section class="hero">
+    <div class="hero-body-neg">
+        <div class="container">
+            {{#each posts as |post|}}
+            {{#if @first}}
+            <!-- Don't post 1st one because it goes up top -->
+            {{else}}
+            {{> post-summary}}
+            {{/if}}
+            {{/each}}
+        </div>
+    </div>
+</section>
+
+<script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
+    crossorigin="anonymous"></script>
+<script src='/js/service.js'></script>

@@ -4,24 +4,46 @@
             <div class="columns">
                 <div class="column is-8 is-offset-2">
                     <figure class="image is-16by9">
-                        <img src="../images/first-post.png" alt="placeholder image" />
+                        <img src="../uploads/{{postData.image.filename}}" class="item-image" alt="placeholder image" />
                     </figure>
                 </div>
             </div>
             <section class="section">
                 <div class="columns">
+
                     <div class="column is-8 is-offset-2">
                         <div class="content is-medium">
                             <h2 class="subtitle is-4">{{format_time
                                 postData.createdAt
                                 }}</h2>
                             <h1 class="title">{{postData.title}}</h1>
-                            <h6>by {{postData.author}}</h6>
+                            <h6>by {{postData.author}}<span
+                                    class="tag is-link is-medium">{{postData.lostOrFound}}</span>
+                                {{#if postData.isCompleted}}
+                                <span class="tag is-primary is-medium tagCompleted">Completed</span>
+                                {{else}}
+                                <span class="tag is-warning is-medium tagCompleted">Uncompleted</span>
+                                {{/if}}
+                            </h6>
+                            <p> <strong>Occurrence date</strong>: {{format_time postData.date}}</p>
+                            <p> <strong>Category</strong>: {{postData.category}}</p>
+                            <p> <strong>Location</strong>: {{postData.location}}</p>
                             <p>{{postData.content}}</p>
                         </div>
+                        {{#if postData.isCompleted}}
+                        <p> <strong>Completer</strong>: {{completer}}</p>
+                        {{else}}
+                        {{#if (isLost postData.lostOrFound)}}
+                        <button class="button is-large  is-primary is-rounded complete">I Found
+                            it!</button>
+                        {{else}}
+                        <button class="button is-large  is-primary is-rounded complete">Claim</button>
+                        {{/if}}
+                        {{/if}}
                     </div>
                 </div>
             </section>
+
             <div class="is-divider"></div>
             <div class="column is-8 is-offset-2">
                 <div class="field is-horizontal">
@@ -44,7 +66,7 @@
                     <div class="field-body">
                         <div class="field">
                             <div class="control">
-                                <button class="button is-success comment-submit post-submit">
+                                <button class="button is-success comment-submit is-pulled-right">
                                     Submit
                                 </button>
                             </div>
@@ -55,14 +77,24 @@
             <div class="column is-8 is-offset-2" id="comment-section">
                 {{#each postData.comments as |cmt|}}
                 <article class="message">
-                    <div class="message-body">
-                        {{content}}
+                    <div class="message-body" id="comment-{{_id}}-div">
+                        <span id="comment-{{_id}}">{{content}}</span>
                         <p class="has-text-right"><strong>-
                                 {{author}},
-                                {{format_time createdAt}}</strong>
-                            {{#if ../loggedInUserData.isAdmin}}
-                            (<span class="delete-comment" data-id="{{_id}}">Delete</span>)</p>
-                        {{/if}}
+                                <span id="comment-{{_id}}-updatedAt">{{format_time updatedAt}}</span></strong></p>
+                        <br />
+                        <div class="buttons is-right">
+                            {{#if (show_edit ../loggedInUserData._id author_id) }}
+                            <button class="button edit-comment is-info" data-id="{{_id}}"> <i class="fa fa-edit icon2"
+                                    aria-hidden="true"></i>Edit</button>
+
+                            {{/if}}
+                            {{#if (show_delete ../loggedInUserData._id author_id ../loggedInUserData.isAdmin) }}
+                            <button class="button delete-comment is-danger" data-id="{{_id}}"><i
+                                    class="fa fa-trash icon2" data-id="{{_id}}" aria-hidden="true"></i>Delete</button>
+
+                            {{/if}}
+                        </div>
                     </div>
                 </article>
                 {{/each}}
@@ -71,4 +103,6 @@
     </div>
     <div class="current-post-id is-invisible">{{postData._id}}</div>
 </section>
+<script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
+    crossorigin="anonymous"></script>
 <script src="/js/post.js"></script>

@@ -1,6 +1,7 @@
 nav.navbar {
     height: 6rem !important;
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06) !important;
+
 }
 
 .navbar-item img {
@@ -31,11 +32,12 @@ nav.navbar {
     margin-top: -3em;
 }
 
-.delete-comment {
-    text-decoration: underline;
-}
 
 .delete-comment:hover {
+    cursor: pointer;
+}
+
+.edit-comment:hover {
     cursor: pointer;
 }
 
@@ -59,11 +61,77 @@ nav.navbar {
     position: relative;
     left: 40px;
 }
-.signup-role{
+.signup-role,.signup-status{
     position: relative;
     left: 40px;
 }
-.post-submit{
+
+.searchbar{
     position: relative;
-    left: 400px;
+    top:7px;
+}
+.icon{
+    position: relative;
+    right:2px;
+    top:3px;
+}
+
+.item-image{
+    object-fit: contain;
+}
+.box{
+    position: relative;
+    bottom: 40px;
+}
+.icon2{
+    position: relative;
+    right: 5px;
+    top: 1px;
+}
+
+.about {
+	margin: 25px 0 20px;
+	text-align: center;
+}
+
+.line-about {
+	width: 150px;
+    margin: auto;
+}
+
+
+.tag{
+    position:relative;
+    left:20px;
+    bottom: 2px;
+}
+.decoration{
+    position: relative;
+    bottom: 500px;
+    left: 40px;
+}
+.decoration-blue{
+    position: relative;
+    bottom: 190px;
+    left:20px;
+}
+.sunflower{
+    position: relative;
+    right: 20px;
+}
+.image-source{
+    position: relative;
+    bottom: 120px;
+    left:70px;
+    color: gray;
+    font: 1em sans-serif;
+}
+.hm-title{
+    position: relative;
+    bottom: 30px;
+    left: 15px;
+}
+.proj{
+    color: brown;
+    font-size: larger;
 }

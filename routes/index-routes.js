@@ -5,7 +5,7 @@ import Post from "../data/Post.js";
 //on / (index) page load
 router.get("/", async (req, res) => {
   try {
-    const posts = await Post.getAll();
+    const posts = await Post.getAllLatest();
     // due to the HTML/CSS template for the blog, package the posts into a custom data structure
     // before sending to be rendered
     // posts: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
