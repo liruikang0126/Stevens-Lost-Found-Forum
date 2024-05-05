@@ -49,9 +49,9 @@ router.put("/:id", withAuth, upload.single("image"), async (req, res) => {
     return res.status(500).json(e);
   }
   const condition =
-    post.author_id === req.body.author_id &&
-    (req.session.loggedInUserData._id === post.author_id ||
-      req.session.loggedInUserData.isAdmin);
+    (post.author_id === req.body.author_id &&
+      req.session.loggedInUserData._id === post.author_id) ||
+    req.session.loggedInUserData.isAdmin;
 
   try {
     if (!condition) throw "You don't have the permission to edit the post";
@@ -68,7 +68,7 @@ router.put("/:id", withAuth, upload.single("image"), async (req, res) => {
       req.body.date,
       req.body.location,
       req.body.lostOrFound,
-      req.body.author_id
+      post.author_id
     );
     return res.status(200).json(updateResult);
   } catch (err) {

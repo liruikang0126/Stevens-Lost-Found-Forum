@@ -68,6 +68,8 @@ Seeded Admin account (Required to see dashboard functionality!) credentials are:
 
 - [x] search bar for date, location and categories
 
+- [x] Landing page design (purpose, motivation and contact)
+
 - [ ] profile function
 
 - [ ] friends function
@@ -75,8 +77,6 @@ Seeded Admin account (Required to see dashboard functionality!) credentials are:
 - [ ] friend communication function
 
 - [ ] map API 
-
-- [ ] Landing page design (purpose, motivation and contact)
 
 - [ ] Monthly list page of the kindest people
 

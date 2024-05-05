@@ -105,4 +105,33 @@ nav.navbar {
     left:20px;
     bottom: 2px;
 }
-
+.decoration{
+    position: relative;
+    bottom: 500px;
+    left: 40px;
+}
+.decoration-blue{
+    position: relative;
+    bottom: 190px;
+    left:20px;
+}
+.sunflower{
+    position: relative;
+    right: 20px;
+}
+.image-source{
+    position: relative;
+    bottom: 120px;
+    left:70px;
+    color: gray;
+    font: 1em sans-serif;
+}
+.hm-title{
+    position: relative;
+    bottom: 30px;
+    left: 15px;
+}
+.proj{
+    color: brown;
+    font-size: larger;
+}

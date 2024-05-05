@@ -21,7 +21,6 @@ router.get("/", async (req, res) => {
     const packagedPosts = helper.filterArray(posts);
     req.query.date1 = new Date(req.query.date1);
     req.query.date2 = new Date(req.query.date2);
-    console.log(req.query);
     //render to page and pass variables for handlebars to work with
     res.render("filter", {
       loggedIn: req.session.loggedIn,

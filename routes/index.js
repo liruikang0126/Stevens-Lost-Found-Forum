@@ -24,7 +24,7 @@ router.use("/logout", logoutRoutes);
 router.use("/dashboard", dashboardRoutes);
 router.use("/edit", editRoutes);
 router.use("/about", aboutRoutes);
-router.use("/profile", profileRoutes);
+router.use("/user", profileRoutes);
 router.use("/service", serviceRoutes);
 router.use("/filter", filterRoutes);
 router.use("*", (req, res) => {
