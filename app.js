@@ -66,6 +66,8 @@ app.expressHandlebars('handlebars', expressHandlebars());
 app.set('view expressHandlebars', 'handlebars');
 app.set('views', path.join(__dirname, 'views'));
 
+
+
 // 配置静态文件目录
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -81,19 +83,19 @@ app.use(session({
   secret: 'your_secret_key',
   resave: false,
   saveUninitialized: false,
-  cookie: { maxAge: 3600000 }  // 设置 cookie 过期时间为 1 小时
+  cookie: { maxAge: 3600000 }
 }));
 
-// 挂载用户路由
+
 app.use('/users', userRoutes);
 
-// 基本错误处理
+
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send('Something broke!');
 });
 
-// 处理 404
+
 app.use((req, res, next) => {
   res.status(404).render('404');  // 假设有一个 404.handlebars 模板
 });

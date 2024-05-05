@@ -1,5 +1,5 @@
 import express from 'express';
-import userData from '../data/User.js'; // 假设 userData 包含之前定义的方法
+import userData from '../data/User.js';
 const router = express.Router();
 
 
@@ -22,6 +22,7 @@ router.get('/:id/profile', async (req, res) => {
         res.status(404).send("User not found");
     }
 });
+
 
 
 // 更新用户资料
