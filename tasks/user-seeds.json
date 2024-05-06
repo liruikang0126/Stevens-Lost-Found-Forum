@@ -1,26 +1,34 @@
 [    
     {
-    "username": "Admin User",
+    "username": "Yunfei Tang",
     "email": "cs546@gmail.com",
     "password": "CS546!!!",
-    "isAdmin": true
+    "isAdmin": true,
+    "phone":"2014791096",
+    "avatar":"Yunfei.jpg"
     },
     {
-        "username": "David Tunnell",
-        "email": "david_test@gmail.com",
+        "username": "Fangqin Li",
+        "email": "fangqin_li@gmail.com",
         "password": "12345AAA!",
-        "isAdmin": true
+        "isAdmin": false,
+        "phone":"2014791097",
+        "avatar":"Fangqin.jpg"
     },
     {
-        "username": "Testy McTesterson",
-        "email": "test_test@gmail.com",
+        "username": "Yizheng Xu",
+        "email": "Yizheng_Xu@gmail.com",
         "password": "12345AAA!",
-        "isAdmin": false
+        "isAdmin": false,
+        "phone":"2014791098",
+        "avatar":"Yizheng.jpg"
     },
     {
-        "username": "Luke Skywalker",
-        "email": "other_test@gmail.com",
+        "username": "Ruikang Li",
+        "email": "ruikang_li@gmail.com",
         "password": "12345AAA!",
-        "isAdmin": false
+        "isAdmin": false,
+        "phone":"2014791099",
+        "avatar":"Ruikang.jpg"
     }
 ]

@@ -17,10 +17,13 @@ const exportedMethods = {
       return content;
     }
   },
+  isFriend(id, array) {
+    return array.includes(id);
+  },
   isLost(status) {
     return status === "lost";
   },
-  show_edit(id1, id2) {
+  isEqual(id1, id2) {
     return id1 === id2;
   },
   show_delete(id1, id2, isAdmin) {
@@ -101,6 +104,15 @@ const exportedMethods = {
       throw `Error: username should not contain numbers`;
     }
     return strVal;
+  },
+  //source: https://stackoverflow.com/questions/4338267/validate-phone-number-with-javascript
+  checkPhone(phone) {
+    phone = phone.trim();
+    if (
+      /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im.test(phone)
+    )
+      return phone;
+    else throw "Your phone number is not valid";
   },
   checkId(id, varName) {
     if (!id) throw `Error: You must provide a ${varName}`;

@@ -70,11 +70,9 @@ Seeded Admin account (Required to see dashboard functionality!) credentials are:
 
 - [x] Landing page design (purpose, motivation and contact)
 
-- [ ] profile function
+- [x] profile function
 
-- [ ] friends function
-
-- [ ] friend communication function
+- [x] friends function
 
 - [ ] map API 
 

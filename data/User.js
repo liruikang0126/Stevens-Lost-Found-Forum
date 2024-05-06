@@ -26,6 +26,10 @@ const exportedMethods = {
       email,
       password: hash,
       isAdmin,
+      avatar: {
+        destination: "public/uploads/",
+        filename: "default.jpg",
+      },
       phone: undefined,
       friends: [],
     };
@@ -33,6 +37,95 @@ const exportedMethods = {
     if (!insertInfo.acknowledged || !insertInfo.insertedId)
       throw "Could not add user";
     return { insertedUser: true };
+  },
+  async update(id, username, phone, avatar) {
+    const userCollection = await users();
+    if (!userCollection) {
+      throw "Database error";
+    }
+    const filter = { _id: new ObjectId(id) };
+    const options = { upsert: false };
+    const updateDoc = {
+      $set: {
+        username: username,
+        phone: phone,
+        avatar: avatar,
+      },
+    };
+    // Update the first document that matches the filter
+    const result = await userCollection.updateOne(filter, updateDoc, options);
+    if (!result.modifiedCount) {
+      throw "error";
+    }
+    return true;
+  },
+  async addFriends(id1, id2) {
+    const userCollection = await users();
+    if (!userCollection) {
+      throw "Database error";
+    }
+    const filter = { _id: new ObjectId(id1) };
+    const options = { upsert: false };
+    const updateDoc = {
+      $push: {
+        friends: id2,
+      },
+    };
+    // Update the first document that matches the filter
+    const result = await userCollection.updateOne(filter, updateDoc, options);
+    if (!result.modifiedCount) {
+      throw "error";
+    }
+    const filter2 = { _id: new ObjectId(id2) };
+    const updateDoc2 = {
+      $push: {
+        friends: id1,
+      },
+    };
+    // Update the first document that matches the filter
+    const result2 = await userCollection.updateOne(
+      filter2,
+      updateDoc2,
+      options
+    );
+    if (!result2.modifiedCount) {
+      throw "error";
+    }
+    return true;
+  },
+  async deleteFriends(id1, id2) {
+    const userCollection = await users();
+    if (!userCollection) {
+      throw "Database error";
+    }
+    const filter = { _id: new ObjectId(id1) };
+    const options = { upsert: false };
+    const updateDoc = {
+      $pull: {
+        friends: id2,
+      },
+    };
+    // Update the first document that matches the filter
+    const result = await userCollection.updateOne(filter, updateDoc, options);
+    if (!result.modifiedCount) {
+      throw "error";
+    }
+    const filter2 = { _id: new ObjectId(id2) };
+    const updateDoc2 = {
+      $pull: {
+        friends: id1,
+      },
+    };
+    // Update the first document that matches the filter
+    const result2 = await userCollection.updateOne(
+      filter2,
+      updateDoc2,
+      options
+    );
+    if (!result2.modifiedCount) {
+      throw "error";
+    }
+    return true;
   },
   // Login using email
   // return the user object (_id returned in the form of string)

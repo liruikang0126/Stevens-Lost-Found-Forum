@@ -156,7 +156,7 @@
                                 {{#each posts}}
                                 <tr>
                                     <td><a href="/post/{{this._id}}">{{this.title}}</a></td>
-                                    <td>{{this.author}}</td>
+                                    <td><a href="/user/{{this.author_id}}">{{this.author}}</a></td>
                                     <td>{{format_time this.createdAt}}</td>
                                     {{#if this.isCompleted}}
                                     <td>Completed</td>

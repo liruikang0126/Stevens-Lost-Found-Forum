@@ -1,0 +1,77 @@
+<section class="hero has-background-grey-lighter">
+    <div class="hero-body ">
+        <div class="container content-section">
+            <div class="columns">
+                <div class="column is-2 is-offset-2">
+                    <figure class="image is-128x128">
+                        <img class="is-rounded avatar" src="../uploads/{{userData.avatar.filename}}" />
+                    </figure>
+                </div>
+                <div class="column is-6 user-title">
+                    <h2 class="text-primary">{{userData.username}}{{#if userData.isAdmin}}
+                        <span class="tag admintag">Admin</span>
+                        {{/if}}
+                    </h2>
+                    <p class="text-secondary">{{userData.email}}
+                    </p>
+                    {{#if loggedIn}}
+                    {{#if (isEqual userData._id
+                    loggedInUserData._id)}}
+                    <button class="button is-dark is-small edit-profile">Edit profile</button>
+                    {{else}}
+
+                    {{#if (isFriend loggedInUserData._id userData.friends)}}
+                    <button class="button is-danger is-small delete-friend">
+                        Delete a friend </button>
+                    {{else}}
+                    <button class="button is-primary is-small add-friend">Add a friend</button>
+                    {{/if}}
+                    {{/if}}
+                    {{/if}}
+
+                </div>
+            </div>
+            <div class="columns">
+                <div class="column is-8 is-offset-2">
+                    <div class="modify">
+                        <p class="user-username"> <strong>Username: </strong> {{userData.username}}</p>
+                        {{#if userData.phone}}
+                        <p class="user-phone"> <strong>Phone number: </strong>{{userData.phone}}</p>
+                        {{else}}
+                        <p> <strong>Phone number: </strong>not set</p>
+                        {{/if}}
+                        <p> <strong>Avatar: </strong><a
+                                href="/uploads/{{userData.avatar.filename}}">{{userData.avatar.filename}}</a></p>
+                    </div>
+
+                    <div class="friends">
+                        <br />
+                        <p class="title">Friends list</p>
+                        {{#if (isEmptyArray userData.friends)}}
+                        <p> Empty</p>
+                        {{else}}
+                        {{#each friends}}
+                        <div class="media">
+                            <div class="media-left">
+                                <figure class="image is-48x48">
+                                    <a href="/user/{{_id}}"><img class="is-rounded" src="/uploads/{{avatar.filename}}"
+                                            alt="Placeholder image" /></a>
+                                </figure>
+                            </div>
+                            <div class="media-content">
+                                <p class="title is-4"><a href="/user/{{_id}}">{{username}}</a></p>
+                                <p class="subtitle is-6">{{email}}</p>
+                            </div>
+                        </div>
+                        {{/each}}
+                        {{/if}}
+                        <br />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </sections>
+    <script src="https://code.jquery.com/jquery-3.6.4.js"
+        integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+    <script src="/js/user.js"></script>

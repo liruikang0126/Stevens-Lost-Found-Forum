@@ -80,7 +80,8 @@
               class="fa fa-dashboard icon"></i>
             Dashboard
           </a>
-          <a class="navbar-item  is-size-5 has-text-weight-semibold" href="/profile"><i class="fas fa-user icon "></i>
+          <a class="navbar-item  is-size-5 has-text-weight-semibold" href="/user/{{loggedInUserData._id}}"><i
+              class="fas fa-user icon "></i>
             {{loggedInUserData.username}}
           </a>
           <a class="navbar-item is-size-5 has-text-weight-semibold" href="/logout/"><i
@@ -114,9 +115,7 @@
     <div class="logged-in-user-id is-invisible">{{loggedInUserData._id}}</div>
   </footer>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
-    crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
   <script src="/js/main.js"></script>
 </body>
 

@@ -1,7 +1,19 @@
 import { Router } from "express";
 export const router = Router();
 import { User } from "../../data/index.js";
+import withAuth from "../../utils/middleware.js";
+import multer from "multer";
+import * as path from "path";
 
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "public/uploads/");
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + path.extname(file.originalname));
+  },
+});
+var upload = multer({ storage: storage });
 // CREATE new user
 router.post("/", async (req, res) => {
   try {
@@ -11,6 +23,47 @@ router.post("/", async (req, res) => {
       req.body.password,
       req.body.is_admin
     );
+    return res.status(200).json(dbUserData);
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json(err);
+  }
+});
+
+// PATCH user
+router.patch("/:id", withAuth, upload.single("avatar"), async (req, res) => {
+  try {
+    const dbUserData = await User.update(
+      req.params.id,
+      req.body.username,
+      req.body.phone,
+      req.file
+    );
+    return res.status(200).json(dbUserData);
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json(err);
+  }
+});
+
+router.patch("/", withAuth, async (req, res) => {
+  try {
+    let dbUserData;
+    if (req.body.isAdd) {
+      dbUserData = await User.addFriends(req.body.id1, req.body.id2);
+    } else {
+      dbUserData = await User.deleteFriends(req.body.id1, req.body.id2);
+    }
+    return res.status(200).json(dbUserData);
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json(err);
+  }
+});
+
+router.patch("/delete", withAuth, async (req, res) => {
+  try {
+    const dbUserData = await User.deleteFriends(req.body.id1, req.body.id2);
     return res.status(200).json(dbUserData);
   } catch (err) {
     console.log(err);

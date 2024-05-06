@@ -17,7 +17,7 @@
                                 postData.createdAt
                                 }}</h2>
                             <h1 class="title">{{postData.title}}</h1>
-                            <h6>by {{postData.author}}<span
+                            <h6>by <a href="/user/{{postData.author_id}}">{{postData.author}}</a><span
                                     class="tag is-link is-medium">{{postData.lostOrFound}}</span>
                                 {{#if postData.isCompleted}}
                                 <span class="tag is-primary is-medium tagCompleted">Completed</span>
@@ -80,11 +80,11 @@
                     <div class="message-body" id="comment-{{_id}}-div">
                         <span id="comment-{{_id}}">{{content}}</span>
                         <p class="has-text-right"><strong>-
-                                {{author}},
+                                <a href="/user/{{cmt.author_id}}">{{author}}</a>,
                                 <span id="comment-{{_id}}-updatedAt">{{format_time updatedAt}}</span></strong></p>
                         <br />
                         <div class="buttons is-right">
-                            {{#if (show_edit ../loggedInUserData._id author_id) }}
+                            {{#if (isEqual ../loggedInUserData._id author_id) }}
                             <button class="button edit-comment is-info" data-id="{{_id}}"> <i class="fa fa-edit icon2"
                                     aria-hidden="true"></i>Edit</button>
 

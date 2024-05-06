@@ -1,137 +1,170 @@
 nav.navbar {
-    height: 6rem !important;
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06) !important;
-
+  height: 6rem !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06) !important;
 }
 
 .navbar-item img {
-    max-height: 75%;
+  max-height: 75%;
 }
 
 .hug {
-    margin-top: -3em;
+  margin-top: -3em;
 }
 
 .table-id {
-    width: 10%;
+  width: 10%;
 }
 
 .table-title {
-    width: auto;
+  width: auto;
 }
 
 .table-edit {
-    width: 6%;
+  width: 6%;
 }
 
 .table-delete {
-    width: 6%;
+  width: 6%;
 }
 
 .hero-body-neg {
-    margin-top: -3em;
+  margin-top: -3em;
 }
 
-
 .delete-comment:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .edit-comment:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 1025px) {
-    .navbar-item img {
-        max-height: 3em;
-    }
+  .navbar-item img {
+    max-height: 3em;
+  }
 }
 
-.nav-title{
-    color: rgb(164, 16, 16);
-    font-size: x-large;
-    font-family: Times New Roman;
-    text-shadow: 1px 1px 1px rgb(97, 97, 97);
+.nav-title {
+  color: rgb(164, 16, 16);
+  font-size: x-large;
+  font-family: Times New Roman;
+  text-shadow: 1px 1px 1px rgb(97, 97, 97);
 }
 
-.register-hint{
-    color: gray;
-    font-size: small;
-    list-style-type: disc;
-    position: relative;
-    left: 40px;
+.register-hint {
+  color: gray;
+  font-size: small;
+  list-style-type: disc;
+  position: relative;
+  left: 40px;
 }
-.signup-role,.signup-status{
-    position: relative;
-    left: 40px;
-}
-
-.searchbar{
-    position: relative;
-    top:7px;
-}
-.icon{
-    position: relative;
-    right:2px;
-    top:3px;
+.signup-role,
+.signup-status {
+  position: relative;
+  left: 40px;
 }
 
-.item-image{
-    object-fit: contain;
+.searchbar {
+  position: relative;
+  top: 7px;
 }
-.box{
-    position: relative;
-    bottom: 40px;
+.icon {
+  position: relative;
+  right: 2px;
+  top: 3px;
 }
-.icon2{
-    position: relative;
-    right: 5px;
-    top: 1px;
+
+.item-image {
+  object-fit: contain;
+}
+.box {
+  position: relative;
+  bottom: 40px;
+}
+.icon2 {
+  position: relative;
+  right: 5px;
+  top: 1px;
 }
 
 .about {
-	margin: 25px 0 20px;
-	text-align: center;
+  margin: 25px 0 20px;
+  text-align: center;
 }
 
 .line-about {
-	width: 150px;
-    margin: auto;
+  width: 150px;
+  margin: auto;
 }
 
+.tag {
+  position: relative;
+  left: 20px;
+  bottom: 2px;
+}
+.decoration {
+  position: relative;
+  bottom: 500px;
+  left: 40px;
+}
+.decoration-blue {
+  position: relative;
+  bottom: 190px;
+  left: 20px;
+}
+.sunflower {
+  position: relative;
+  right: 20px;
+}
+.image-source {
+  position: relative;
+  bottom: 120px;
+  left: 70px;
+  color: gray;
+  font: 1em sans-serif;
+}
+.hm-title {
+  position: relative;
+  bottom: 30px;
+  left: 15px;
+}
+.proj {
+  color: brown;
+  font-size: larger;
+}
 
-.tag{
-    position:relative;
-    left:20px;
-    bottom: 2px;
+.content-section {
+  background: #ffffff;
+  padding: 60px 10px;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  margin-bottom: 20px;
+  width: 70%;
 }
-.decoration{
-    position: relative;
-    bottom: 500px;
-    left: 40px;
+
+.text-primary {
+  font-size: xx-large;
+  font-weight: bold;
+  position: relative;
+  top: 15px;
 }
-.decoration-blue{
-    position: relative;
-    bottom: 190px;
-    left:20px;
+.text-secondary {
+  position: relative;
+  top: 15px;
 }
-.sunflower{
-    position: relative;
-    right: 20px;
+.admintag {
+  position: relative;
+  bottom: 5px;
 }
-.image-source{
-    position: relative;
-    bottom: 120px;
-    left:70px;
-    color: gray;
-    font: 1em sans-serif;
+.edit-profile,
+.add-friend,.delete-friend {
+  position: relative;
+  top: 23px;
 }
-.hm-title{
-    position: relative;
-    bottom: 30px;
-    left: 15px;
+.modify {
+  font-size: larger;
 }
-.proj{
-    color: brown;
-    font-size: larger;
+.img-avatar {
+  border-radius: 50%;
 }
