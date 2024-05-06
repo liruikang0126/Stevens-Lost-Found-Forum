@@ -24,9 +24,8 @@
                     <div class="card">
                         <div class="card-image">
                             <figure class="image is-16by9">
-                                <div id="toggle">
-                                    <img src="../uploads/{{posts.0.0.image.filename}}" class="item-image"
-                                        alt="placeholder image" />
+                                <img src="../uploads/{{posts.0.0.image.filename}}" class="item-image"
+                                    alt="placeholder image" />
                             </figure>
                         </div>
 
@@ -37,8 +36,8 @@
                                     <h2 class="subtitle is-5 has-text-grey">{{format_time
                                         posts.0.0.createdAt
                                         }}</h2>
-                                    <h1 class="title has-text-black is-3"><a
-                                            href="/post/{{posts.0.0._id}}">{{posts.0.0.title}}</a></h1>
+                                    <h2 class="title has-text-black is-3"><a
+                                            href="/post/{{posts.0.0._id}}">{{posts.0.0.title}}</a></h2>
                                 </div>
                             </div>
                             <div class="content">
@@ -53,11 +52,10 @@
         </div>
     </div>
 </section>
-</div>
-</div>
-</section>
+
 <!-- Articles -->
 <section class="hero">
+    <h1 class="is-invisible">Other post</h1>
     <div class="hero-body-neg">
         <div class="container">
             {{#each posts as |post|}}

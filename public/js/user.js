@@ -11,12 +11,12 @@
 
   let url = window.location.pathname;
   let id = url.substring(url.lastIndexOf("/") + 1);
-  id = helper.checkId(id, "userId");
 
   addButton.on("click", async (event) => {
     event.preventDefault();
     let userId = $(".logged-in-user-id").get(0).innerHTML;
     userId = helper.checkId(userId, "loggedInUserId");
+    id = helper.checkId(id, "userId");
 
     if (!userId) {
       document.location.replace("/login");
@@ -53,6 +53,7 @@
     event.preventDefault();
     let userId = $(".logged-in-user-id").get(0).innerHTML;
     userId = helper.checkId(userId, "loggedInUserId");
+    id = helper.checkId(id, "userId");
 
     if (!userId) {
       document.location.replace("/login");

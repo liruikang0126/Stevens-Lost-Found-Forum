@@ -1,4 +1,5 @@
 <section class="hero">
+    <h1 class="is-invisible">Post</h1>
     <div class="hero-body">
         <div class="container">
             <div class="columns">
@@ -16,7 +17,7 @@
                             <h2 class="subtitle is-4">{{format_time
                                 postData.createdAt
                                 }}</h2>
-                            <h1 class="title">{{postData.title}}</h1>
+                            <h2 class="title">{{postData.title}}</h2>
                             <h6>by <a href="/user/{{postData.author_id}}">{{postData.author}}</a><span
                                     class="tag is-link is-medium">{{postData.lostOrFound}}</span>
                                 {{#if postData.isCompleted}}
@@ -77,6 +78,7 @@
             <div class="column is-8 is-offset-2" id="comment-section">
                 {{#each postData.comments as |cmt|}}
                 <article class="message">
+                    <h2 class="is-invisible">Comments</h2>
                     <div class="message-body" id="comment-{{_id}}-div">
                         <span id="comment-{{_id}}">{{content}}</span>
                         <p class="has-text-right"><strong>-

@@ -74,7 +74,7 @@ Seeded Admin account (Required to see dashboard functionality!) credentials are:
 
 - [x] friends function
 
-- [ ] Postman check every URL and relative written request methods
+- [x] Postman check every URL and relative written request methods
 
-- [ ] XSS
+- [x] XSS
 
