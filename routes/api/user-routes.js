@@ -34,7 +34,6 @@ router.post("/", async (req, res) => {
     );
     return res.status(200).json(dbUserData);
   } catch (err) {
-    console.log(err);
     return res.status(500).json(err);
   }
 });
@@ -100,9 +99,9 @@ router.post("/login", async (req, res) => {
   try {
     try {
       req.body.email = helper.checkEmail(req.body.email);
-      console.log(req.body.email);
+
       req.body.password = helper.checkPassword(req.body.password);
-      console.log(req.body.password);
+
       var dbUserData = await User.getByEmail(req.body.email);
       if (!dbUserData) throw "Incorrect email or password. Please try again!";
       //checks that password is valid
