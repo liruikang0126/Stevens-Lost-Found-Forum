@@ -19,7 +19,7 @@ router.post("/", withAuth, async (req, res) => {
     const post = await Post.getByPostId(req.body.post_id);
     let comments = post.comments;
     comments = comments.filter((e) => {
-      return e.author_id == req.body.author_id;
+      return e.author_id == req.session.loggedInUserData._id;
     });
     if (comments.length >= 1) {
       throw "You can create only one comment in each post.";

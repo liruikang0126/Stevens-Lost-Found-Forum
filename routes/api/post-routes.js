@@ -4,6 +4,7 @@ import { Post } from "../../data/index.js";
 import withAuth from "../../utils/middleware.js";
 import multer from "multer";
 import * as path from "path";
+import helper from "../../utils/helpers.js";
 
 // initialize multer
 var storage = multer.diskStorage({

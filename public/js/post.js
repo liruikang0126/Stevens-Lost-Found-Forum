@@ -4,7 +4,7 @@ const submitCommentHandler = async (event) => {
 
   let comment = document.querySelector(".comment-input").value;
   let author_id = document.querySelector(".logged-in-user-id").innerHTML; //need id of logged in user
-  author_id = helper.checkId(author_id, "author_id");
+
   let post_id = document.querySelector(".current-post-id").innerHTML;
 
   if (!author_id) {
@@ -70,7 +70,7 @@ const completePostHandler = async (event) => {
   event.preventDefault();
   let author_id = document.querySelector(".logged-in-user-id").innerHTML; //need id of logged in user
   let post_id = document.querySelector(".current-post-id").innerHTML;
-  author_id = helper.checkId(author_id, "author_id");
+
   post_id = helper.checkId(post_id, "post_id");
   if (!author_id) {
     document.location.replace("/login");
