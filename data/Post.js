@@ -29,8 +29,8 @@ const exportedMethods = {
     date = helper.checkDate(date);
     lostOrFound = helper.checkLOF(lostOrFound);
     image = helper.checkImage(image);
-
     author_id = helper.checkId(author_id, "author_id");
+
     const user = await User.getByAuthorId(author_id);
     const author = user.username;
     const postCollection = await posts();
@@ -82,6 +82,12 @@ const exportedMethods = {
     return postList;
   },
   async getByFilter(lostOrFound, category, date1, date2, location) {
+    category = helper.checkCategory(category);
+    location = helper.checkLocation(location);
+    date1 = helper.checkDate(date1);
+    date2 = helper.checkDate(date2);
+    lostOrFound = helper.checkLOF(lostOrFound);
+
     const postCollection = await posts();
     let postList = await postCollection.find({}).toArray();
     postList.sort(function (a, b) {

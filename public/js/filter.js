@@ -18,7 +18,7 @@ $(document).ready(function () {
       alert(e);
     }
   });
-}); // jQuery is exported as $ and jQuery
+});
 
 const helper = {
   checkCategory(category) {

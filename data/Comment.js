@@ -11,9 +11,9 @@ const exportedMethods = {
   async create(postId, author_id, content) {
     postId = helper.checkId(postId, "postId");
     author_id = helper.checkId(author_id, "author_id");
+    content = helper.checkString(content, 2000, "content");
     const user = await User.getByAuthorId(author_id);
     const author = user.username;
-    content = helper.checkString(content, 2000, "content");
     const createdAt = new Date();
     const updatedAt = new Date();
     const postCollection = await posts();

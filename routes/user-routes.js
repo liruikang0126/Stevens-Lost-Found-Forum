@@ -1,25 +1,24 @@
 import { Router } from "express";
 const router = Router();
-import Post from "../data/Post.js";
 import { User } from "../data/index.js";
 import helper from "../utils/helpers.js";
 
-// on post page load render post data
 router.get("/:id", async (req, res) => {
   try {
-    const post = await Post.getByPostId(
-      helper.checkId(req.params.id, "postId")
+    const user = await User.getByAuthorId(
+      helper.checkId(req.params.id, "userId")
     );
-    let completer = { username: "" };
-    if (post.isCompleted) {
-      completer = await User.getByAuthorId(post.completer_id);
+    const data = [];
+    for (let i = 0; i < user.friends.length; i++) {
+      const user1 = await User.getByAuthorId(user.friends[i]);
+      data.push(user1);
     }
-    if (post) {
-      res.render("post", {
+    if (user) {
+      res.render("user", {
         loggedIn: req.session.loggedIn,
         loggedInUserData: req.session.loggedInUserData,
-        postData: post,
-        completer: completer.username,
+        userData: user,
+        friends: data,
       });
     } else {
       res.redirect("/");
@@ -28,4 +27,5 @@ router.get("/:id", async (req, res) => {
     res.status(500).json(err);
   }
 });
+
 export default router;

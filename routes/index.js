@@ -10,7 +10,7 @@ import logoutRoutes from "./logout-routes.js";
 import dashboardRoutes from "./dashboard-routes.js";
 import editRoutes from "./edit-routes.js";
 import aboutRoutes from "./about-routes.js";
-import profileRoutes from "./profile-routes.js";
+import userRoutes from "./user-routes.js";
 import serviceRoutes from "./service-routes.js";
 import filterRoutes from "./filter-routes.js";
 
@@ -24,7 +24,7 @@ router.use("/logout", logoutRoutes);
 router.use("/dashboard", dashboardRoutes);
 router.use("/edit", editRoutes);
 router.use("/about", aboutRoutes);
-router.use("/user", profileRoutes);
+router.use("/user", userRoutes);
 router.use("/service", serviceRoutes);
 router.use("/filter", filterRoutes);
 router.use("*", (req, res) => {

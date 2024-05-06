@@ -2,9 +2,9 @@
 const signupFormHandler = async (event) => {
   event.preventDefault();
 
-  let username = document.querySelector(".username-input").value.trim();
-  let email = document.querySelector(".email-input").value.trim();
-  let password = document.querySelector(".password-input").value.trim();
+  let username = document.querySelector(".username-input").value;
+  let email = document.querySelector(".email-input").value;
+  let password = document.querySelector(".password-input").value;
   let confirmPassword = document.getElementById("confirmPassword").value;
   let role = $(":radio[name=role]:checked").val();
   let is_admin = role == "admin";

@@ -9,9 +9,9 @@ const submitPostHandler = async (event) => {
   let category = document.getElementById("category").value;
   let location = document.getElementById("location").value;
   let image = document.getElementById("upload").files[0];
-
-  const author_id = document.querySelector(".logged-in-user-id").innerHTML; //need id of logged in user
-  const post_id = document.querySelector(".current-post-id").innerHTML;
+  let author_id = document.querySelector(".logged-in-user-id").innerHTML; //need id of logged in user
+  let post_id = document.querySelector(".current-post-id").innerHTML;
+  post_id = helper.checkId(post_id, "post_id");
 
   if (!author_id) {
     alert(
@@ -27,6 +27,7 @@ const submitPostHandler = async (event) => {
       date = helper.checkDate(date);
       lostOrFound = helper.checkLOF(lostOrFound);
       image = helper.checkImage(image);
+      author_id = helper.checkId(author_id, "author_id");
 
       const formData = new FormData();
       formData.append("title", title);
@@ -36,7 +37,6 @@ const submitPostHandler = async (event) => {
       formData.append("location", location);
       formData.append("content", content);
       formData.append("image", image);
-      formData.append("author_id", author_id);
 
       const response = await fetch("/api/post/" + post_id, {
         method: "PUT",
@@ -80,6 +80,14 @@ document.querySelector("#cancel").addEventListener("click", (event) => {
 });
 
 const helper = {
+  checkId(id, varName) {
+    if (!id) throw `Error: You must provide a ${varName}`;
+    if (typeof id !== "string") throw `Error:${varName} must be a string`;
+    id = id.trim();
+    if (id.length === 0)
+      throw `Error: ${varName} cannot be an empty string or just spaces`;
+    return id;
+  },
   checkString(strVal, maxlen, varName) {
     if (!strVal) throw `Error: You must supply a ${varName}!`;
     if (typeof strVal !== "string") throw `Error: ${varName} must be a string!`;
