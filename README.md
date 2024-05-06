@@ -10,37 +10,49 @@ npm run seed
 npm run dev
 ```
 
-Seeded Admin account (Required to see dashboard functionality!) credentials are:
+Seeded general user account credentials are
+
+- username:
+
+  ``` 
+  fangqin_li@gmail.com
+  ```
+
+- password:
+
+  ``` 
+  12345AAA!
+  ```
+
+Seeded Admin account credentials are:
 
 - username: 
 
-  ``` username 
+  ```  
   cs546@gmail.com
   ```
 
 - password: 
 
-  ``` password 
+  ```  
   CS546!!!
   ```
 
-### Todo 
+### Core feature
 
-- [x] Basic login function
+•**Landing Page**: Our mission and navigation to important sections
 
-- [x] Basic post function
+•**Post**: To create lost or found items' reports
 
-- [x] Basic comment function
+•**Claim**: Simple click buttons like "Claim!" and "Found!"
 
-- [x] Register function
+•**Edit**: To update their posts with new information or delete them
 
-- [x] add isAdmin to the signup handlebars file
+•**Search**: To find posts based on time, place, and category
 
-- [x] author_id => author name
+•**View**: To highlight the latest and trending posts, change the tabs
 
-- [x] client-side validation check
-
-- [x] check and schedule router and middleware 
+•**Comment**: To offer tips or leads, and increase the visibility of posts
 
 - [x] comment edit function
 
@@ -50,31 +62,33 @@ Seeded Admin account (Required to see dashboard functionality!) credentials are:
 
 - [x] comment limit function (one account can post only one comment in the post)
 
-- [x] trending and latest posts page
+•**User Profile**: to show and edit user information and friend lists. 
 
-- [x] upload image function
+•**Adding/Removing friends**: To enhance community support
 
-- [x] type check in client side validation, routes, data file folders
+•**Login System**
 
-- [x] data folder other functions change
+### Extra feature
 
-- [x] database seed file change
+•**Admin user**: Admin has more authority such as editing or deleting others' posts and deleting malicious attack comments
 
-- [x] handlebars changes
+### Screenshot Image ##
 
-- [x] not show dashboard and profile immediately after registration without login
+#### Landing page
 
-- [x] claim function
+![image](https://github.com/liruikang0126/Stevens-Lost-Found-Forum/blob/yunfei0312/public/images/landing_page.png)
 
-- [x] search bar for date, location and categories
+#### Search
 
-- [x] Landing page design (purpose, motivation and contact)
+![image](https://github.com/liruikang0126/Stevens-Lost-Found-Forum/blob/yunfei0312/public/images/search.png)
 
-- [x] profile function
+#### Dashboard
 
-- [x] friends function
+![image](https://github.com/liruikang0126/Stevens-Lost-Found-Forum/blob/yunfei0312/public/images/dashboard.png)
 
-- [x] Postman check every URL and relative written request methods
+#### User profile
 
-- [x] XSS
+![image](https://github.com/liruikang0126/Stevens-Lost-Found-Forum/blob/yunfei0312/public/images/user_profile.png)
+
+
 
