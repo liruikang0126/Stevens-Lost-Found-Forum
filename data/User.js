@@ -139,10 +139,12 @@ const exportedMethods = {
   // return the user object (_id returned in the form of string)
   async getByEmail(email) {
     email = helper.checkEmail(email);
+    console.log(email);
     const userCollection = await users();
     const findEmail = await userCollection.findOne({
       email: email,
     });
+    console.log(findEmail);
     if (!findEmail) {
       return false;
     }

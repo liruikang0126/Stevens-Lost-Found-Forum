@@ -100,36 +100,27 @@ router.post("/login", async (req, res) => {
   try {
     try {
       req.body.email = helper.checkEmail(req.body.email);
+      console.log(req.body.email);
       req.body.password = helper.checkPassword(req.body.password);
+      console.log(req.body.password);
+      var dbUserData = await User.getByEmail(req.body.email);
+      if (!dbUserData) throw "Incorrect email or password. Please try again!";
+      //checks that password is valid
+      const validPassword = await User.checkPassword(
+        dbUserData,
+        req.body.password
+      );
+      if (!validPassword)
+        throw "Incorrect email or password. Please try again!";
     } catch (err) {
       return res.status(400).json(err);
     }
-    const dbUserData = await User.getByEmail(req.body.email);
 
-    if (!dbUserData) {
-      res.status(400).json({
-        message: "Incorrect email or password. Please try again!",
-      });
-      return;
-    }
-    //checks that password is valid
-    const validPassword = await User.checkPassword(
-      dbUserData,
-      req.body.password
-    );
-
-    if (!validPassword) {
-      res.status(400).json({
-        message: "Incorrect email or password. Please try again!",
-      });
-      return;
-    }
     //save data to session for use elsewhere
     req.session.save(() => {
       req.session.loggedIn = true;
       req.session.loggedInUserData = dbUserData;
       console.log("🚀", req.session.cookie);
-
       res.status(200).json({
         user: dbUserData,
         message: "You are now logged in!",
