@@ -9,12 +9,18 @@ router.get("/", async (req, res) => {
     if (!req.query.lostOrFound) {
       posts = await Post.getAllHottest();
     } else {
+      const lostOrFound = helper.checkLOF(req.query.lostOrFound);
+      const category = helper.checkCategory(req.query.category);
+      const date1 = helper.checkDate(req.query.date1);
+      const date2 = helper.checkDate(req.query.date2);
+      const location = helper.checkLocation(req.query.location);
+
       posts = await Post.getByFilter(
-        req.query.lostOrFound,
-        req.query.category,
-        req.query.date1,
-        req.query.date2,
-        req.query.location
+        lostOrFound,
+        category,
+        date1,
+        date2,
+        location
       );
     }
     /* const posts = await Post.getAllLatest(); */

@@ -2,11 +2,14 @@ import { Router } from "express";
 const router = Router();
 import Post from "../data/Post.js";
 import { User } from "../data/index.js";
+import helper from "../utils/helpers.js";
 
 // on post page load render post data
 router.get("/:id", async (req, res) => {
   try {
-    const post = await Post.getByPostId(req.params.id);
+    const post = await Post.getByPostId(
+      helper.checkId(req.params.id, "postId")
+    );
     let completer = { username: "" };
     if (post.isCompleted) {
       completer = await User.getByAuthorId(post.completer_id);

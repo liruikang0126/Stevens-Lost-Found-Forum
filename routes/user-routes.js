@@ -1,10 +1,13 @@
 import { Router } from "express";
 const router = Router();
 import { User } from "../data/index.js";
+import helper from "../utils/helpers.js";
 
 router.get("/:id", async (req, res) => {
   try {
-    const user = await User.getByAuthorId(req.params.id);
+    const user = await User.getByAuthorId(
+      helper.checkId(req.params.id, "userId")
+    );
     const data = [];
     for (let i = 0; i < user.friends.length; i++) {
       const user1 = await User.getByAuthorId(user.friends[i]);

@@ -9,8 +9,9 @@ const submitPostHandler = async (event) => {
   let location = document.getElementById("location").value;
   let content = document.querySelector(".content-input").value;
   let image = document.getElementById("upload").files[0];
+  let author_id = document.querySelector(".logged-in-user-id").innerHTML; //need id of logged in user
+  author_id = helper.checkId(author_id, "author_id");
 
-  const author_id = document.querySelector(".logged-in-user-id").innerHTML; //need id of logged in user
   if (!author_id) {
     alert(
       "You can't post if not logged in. Please logout and in again and then try again."
@@ -34,7 +35,6 @@ const submitPostHandler = async (event) => {
       formData.append("location", location);
       formData.append("content", content);
       formData.append("image", image);
-      formData.append("author_id", author_id);
 
       const response = await fetch("/api/post/", {
         method: "POST",
@@ -48,7 +48,6 @@ const submitPostHandler = async (event) => {
           confirmButtonText: "OK",
         });
         var delayInMilliseconds = 1000;
-
         setTimeout(function () {
           //your code to be executed after seconds
           document.location.replace("/dashboard");
@@ -112,6 +111,14 @@ deleteButtons.forEach((el) =>
 );
 
 const helper = {
+  checkId(id, varName) {
+    if (!id) throw `Error: You must provide a ${varName}`;
+    if (typeof id !== "string") throw `Error:${varName} must be a string`;
+    id = id.trim();
+    if (id.length === 0)
+      throw `Error: ${varName} cannot be an empty string or just spaces`;
+    return id;
+  },
   checkString(strVal, maxlen, varName) {
     if (!strVal) throw `Error: You must supply a ${varName}!`;
     if (typeof strVal !== "string") throw `Error: ${varName} must be a string!`;

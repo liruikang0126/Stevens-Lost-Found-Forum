@@ -62,7 +62,7 @@ Seeded Admin account (Required to see dashboard functionality!) credentials are:
 
 - [x] handlebars changes
 
-- [x] not show dashboard和profile immediately after registration without login
+- [x] not show dashboard and profile immediately after registration without login
 
 - [x] claim function
 
@@ -74,13 +74,7 @@ Seeded Admin account (Required to see dashboard functionality!) credentials are:
 
 - [x] friends function
 
-- [ ] map API 
-
-- [ ] Monthly list page of the kindest people
-
 - [ ] Postman check every URL and relative written request methods
 
 - [ ] XSS
-
-- [ ] tota11y
 

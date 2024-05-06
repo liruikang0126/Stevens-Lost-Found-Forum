@@ -1,4 +1,5 @@
 import { ObjectId } from "mongodb";
+import xss from "xss";
 const exportedMethods = {
   format_time(date) {
     //'toLocaleTimeString()' method to format the time with custom parameters
@@ -29,6 +30,9 @@ const exportedMethods = {
   show_delete(id1, id2, isAdmin) {
     return id1 === id2 || isAdmin;
   },
+  isEmptyArray(array) {
+    return array.length == 0;
+  },
   checkString(strVal, maxlen, varName) {
     if (!strVal) throw `Error: You must supply a ${varName}!`;
     if (typeof strVal !== "string") throw `Error: ${varName} must be a string!`;
@@ -37,7 +41,7 @@ const exportedMethods = {
       throw `Error: ${varName} cannot be an empty string or string with just spaces`;
     if (strVal.length > maxlen)
       throw `Error: ${varName}'s length cannot exceed ${maxlen}`;
-    return strVal;
+    return xss(strVal);
   },
   checkIsAdmin(isAdmin) {
     if (typeof isAdmin !== "boolean")
@@ -56,7 +60,7 @@ const exportedMethods = {
     if (!regExp.test(email)) {
       throw "Invalid email address";
     }
-    return email;
+    return xss(email);
   },
   hasSpace(myString) {
     return /\s/.test(myString);
@@ -86,7 +90,7 @@ const exportedMethods = {
     if (!this.checkRegex(strVal)) {
       throw `Error: password should have at least one uppercase character, one number and one special character`;
     }
-    return strVal;
+    return xss(strVal);
   },
   hasNumber(myString) {
     return /\d/.test(myString);
@@ -103,15 +107,13 @@ const exportedMethods = {
     if (this.hasNumber(strVal)) {
       throw `Error: username should not contain numbers`;
     }
-    return strVal;
+    return xss(strVal);
   },
   //source: https://stackoverflow.com/questions/4338267/validate-phone-number-with-javascript
   checkPhone(phone) {
     phone = phone.trim();
-    if (
-      /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im.test(phone)
-    )
-      return phone;
+    if (/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4}$/im.test(phone))
+      return xss(phone);
     else throw "Your phone number is not valid";
   },
   checkId(id, varName) {
@@ -121,25 +123,39 @@ const exportedMethods = {
     if (id.length === 0)
       throw `Error: ${varName} cannot be an empty string or just spaces`;
     if (!ObjectId.isValid(id)) throw `Error: ${varName} invalid object ID`;
-    return id;
+    return xss(id);
   },
-  stringifyPost(post) {
-    post._id = post._id.toString();
-    post.author_id = post.author_id.toString();
-    post.comments.map((e) => {
-      e._id = e._id.toString();
-      return e;
-    });
-    return post;
+  checkCategory(category) {
+    const categoryList = ["Electronics", "Accessories", "Clothing", "Other"];
+    if (!categoryList.includes(category)) {
+      throw "category error";
+    }
+    return xss(category);
   },
-  unstringifyPost(post) {
-    post._id = new ObjectId(post._id);
-    post.author_id = new ObjectId(post.author_id);
-    post.comments.map((e) => {
-      e._id = new ObjectId(e._id);
-      return e;
-    });
-    return post;
+  checkLocation(location) {
+    const locationList = ["Gateway South", "Gateway North", "Other"];
+    if (!locationList.includes(location)) {
+      throw "location error";
+    }
+    return xss(location);
+  },
+  checkDate(date) {
+    const d1 = new Date(xss(date));
+    const d2 = new Date();
+    if (d1 > d2 || isNaN(d1)) throw "date error";
+    return d1;
+  },
+  checkLOF(lostOrFound) {
+    if (!lostOrFound == "lost" && !lostOrFound == "found") {
+      throw "lostOrFound error";
+    }
+    return xss(lostOrFound);
+  },
+  checkImage(image) {
+    if (!image) {
+      throw "image is null";
+    }
+    return image;
   },
   filterArray(posts) {
     const packagedPosts = [];
@@ -180,40 +196,23 @@ const exportedMethods = {
     }
     return packagedPosts;
   },
-  checkCategory(category) {
-    const categoryList = ["Electronics", "Accessories", "Clothing", "Other"];
-    if (!categoryList.includes(category)) {
-      throw "category error";
-    }
-    return category;
+  stringifyPost(post) {
+    post._id = post._id.toString();
+    post.author_id = post.author_id.toString();
+    post.comments.map((e) => {
+      e._id = e._id.toString();
+      return e;
+    });
+    return post;
   },
-  checkLocation(location) {
-    const locationList = ["Gateway South", "Gateway North", "Other"];
-    if (!locationList.includes(location)) {
-      throw "location error";
-    }
-    return location;
-  },
-  checkDate(date) {
-    const d1 = new Date(date);
-    const d2 = new Date();
-    if (d1 > d2 || isNaN(d1)) throw "date error";
-    return d1;
-  },
-  checkLOF(lostOrFound) {
-    if (!lostOrFound == "lost" && !lostOrFound == "found") {
-      throw "lostOrFound error";
-    }
-    return lostOrFound;
-  },
-  checkImage(image) {
-    if (!image) {
-      throw "image is null";
-    }
-    return image;
-  },
-  isEmptyArray(array) {
-    return array.length == 0;
+  unstringifyPost(post) {
+    post._id = new ObjectId(post._id);
+    post.author_id = new ObjectId(post.author_id);
+    post.comments.map((e) => {
+      e._id = new ObjectId(e._id);
+      return e;
+    });
+    return post;
   },
 };
 export default exportedMethods;

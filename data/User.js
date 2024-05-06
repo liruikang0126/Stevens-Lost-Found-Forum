@@ -39,6 +39,10 @@ const exportedMethods = {
     return { insertedUser: true };
   },
   async update(id, username, phone, avatar) {
+    id = helper.checkId(id, "userId");
+    username = helper.checkUsername(username);
+    phone = helper.checkPhone(phone);
+    avatar = helper.checkImage(avatar);
     const userCollection = await users();
     if (!userCollection) {
       throw "Database error";
@@ -60,6 +64,8 @@ const exportedMethods = {
     return true;
   },
   async addFriends(id1, id2) {
+    id1 = helper.checkId(id1, "userId");
+    id2 = helper.checkId(id2, "friendId");
     const userCollection = await users();
     if (!userCollection) {
       throw "Database error";
@@ -94,6 +100,8 @@ const exportedMethods = {
     return true;
   },
   async deleteFriends(id1, id2) {
+    id1 = helper.checkId(id1, "userId");
+    id2 = helper.checkId(id2, "friendId");
     const userCollection = await users();
     if (!userCollection) {
       throw "Database error";
